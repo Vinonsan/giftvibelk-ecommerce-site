@@ -1,34 +1,47 @@
-import type { OccasionItem } from "../types/home";
+import type {
+  HeroFeature,
+  HeroShowcase,
+  HeroStat,
+} from "../types/home";
 
-export const homeCategories = [
-  "Birthday Gifts",
-  "Anniversary Gifts",
-  "Wedding Gifts",
-  "Romantic Surprises",
-  "Custom Gift Boxes",
-  "Flowers & Sweet Treats",
+export const heroStats: HeroStat[] = [
+  { value: "500+", label: "gift ideas curated for joyful moments" },
+  { value: "24h", label: "fast order support for last-minute surprises" },
+  { value: "4.9/5", label: "customer love from thoughtful gifting" },
 ];
 
-export const homeHighlights = [
-  "Curated gift ideas for every celebration",
-  "Designed for Sri Lankan gifting moments",
-  "Elegant packaging with a premium look",
+export const heroFeatures: HeroFeature[] = [
+  {
+    title: "Curated for every celebration",
+    description: "Birthday, anniversary, wedding, and surprise-ready picks.",
+  },
+  {
+    title: "Elegant presentation",
+    description: "Premium wrapping, keepsake cards, and refined packaging.",
+  },
+  {
+    title: "Island-wide convenience",
+    description: "Simple ordering flow with support that feels personal.",
+  },
 ];
 
-export const homeOccasions: OccasionItem[] = [
+export const heroShowcase: HeroShowcase[] = [
   {
-    title: "Birthday Collection",
-    description:
-      "Cake surprise boxes, flowers, chocolates, and custom gifts for unforgettable birthdays.",
+    src: "/hero-curated-gift.svg",
+    alt: "Curated birthday gift box with ribbon and sweets",
+    eyebrow: "Birthday Edit",
+    title: "Curated gift boxes with warm, premium details",
   },
   {
-    title: "Anniversary Gifts",
-    description:
-      "Romantic gift sets, memory boxes, and elegant surprise ideas for couples.",
+    src: "/hero-floral-surprise.svg",
+    alt: "Romantic floral surprise arrangement with card",
+    eyebrow: "Anniversary Pick",
+    title: "Soft florals and keepsakes for meaningful surprises",
   },
   {
-    title: "Wedding & Engagement",
-    description:
-      "Premium gift bundles and celebration hampers for newlyweds and special family moments.",
+    src: "/hero-luxury-box.svg",
+    alt: "Luxury celebration hamper with cake and candle accents",
+    eyebrow: "Celebration Hamper",
+    title: "Elegant hampers styled for modern gifting moments",
   },
 ];
