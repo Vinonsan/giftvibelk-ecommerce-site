@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
-type BadgeVariant = "primary" | "secondary" | "success" | "warning" | "danger" | "dark";
+type BadgeVariant = "primary" | "secondary" | "success" | "warning" | "danger" | "dark" | "glass";
 type BadgeSize = "sm" | "md";
 
 export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
@@ -18,6 +18,7 @@ const variantClasses: Record<BadgeVariant, string> = {
   success: "border border-emerald-300 bg-emerald-100 text-emerald-700",
   warning: "border border-amber-300 bg-amber-100 text-amber-700",
   danger: "border border-rose-300 bg-rose-100 text-rose-700",
+  glass: "border border-white/30 bg-white/10 backdrop-blur text-white",
 };
 
 const sizeClasses: Record<BadgeSize, string> = {
