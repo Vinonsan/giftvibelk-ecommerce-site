@@ -61,7 +61,7 @@ const featuredProducts = [
   }
 ];
 
-export default function FeaturedProducts() {
+const FeaturedProducts = () => {
   return (
     <section aria-label="Featured gift products" >
       <div className="space-y-12">
@@ -71,8 +71,8 @@ export default function FeaturedProducts() {
         />
 
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-          {featuredProducts.slice(0, 6).map((product) => (
-            <ProductCard key={product.slug} {...product} />
+          {featuredProducts.slice(0, 6).map((product, index) => (
+            <ProductCard key={`${product.slug}-${index}`} {...product} />
           ))}
         </div>
 
@@ -87,3 +87,5 @@ export default function FeaturedProducts() {
     </section>
   );
 }
+
+export default FeaturedProducts

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
+import Svg from "@/app/components/Svg";
 
 const quickLinks = [
   { href: "/", label: "Home" },
@@ -16,6 +17,13 @@ const categoryLinks = [
   { href: "/categories/custom-gifts", label: "Custom Gifts" },
 ];
 
+const socialLinks = [
+  { href: "https://facebook.com", label: "Facebook", icon: "facebook" as const },
+  { href: "https://youtube.com", label: "YouTube", icon: "youtube" as const },
+  { href: "https://instagram.com", label: "Instagram", icon: "instagram" as const },
+  { href: "https://tiktok.com", label: "TikTok", icon: "tiktok" as const },
+];
+
 const Footer = () => {
   return (
     <footer aria-label="Footer">
@@ -23,8 +31,7 @@ const Footer = () => {
         <div className="bg-card px-8 py-6">
           
           <div className="grid grid-cols-2 gap-10 lg:grid-cols-5 lg:gap-12">
-            
-            {/* Column 1 */}
+
             <div className="space-y-4 lg:col-span-2">
               <Link href="/" className="flex items-center gap-2">
                 <Image
@@ -43,13 +50,28 @@ const Footer = () => {
                 Thoughtful gifting across Sri Lanka with curated hampers,
                 flowers, cakes, and custom surprises for every celebration.
               </p>
+
+              <div className="flex flex-wrap items-center gap-3">
+                {socialLinks.map(({ href, label, icon }) => (
+                  <Link
+                    key={label}
+                    href={href}
+                    aria-label={label}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-primary/15 bg-white text-black/75 transition hover:border-primary hover:text-primary"
+                  >
+                    <Svg name={icon} className="h-5 w-5" />
+                  </Link>
+                ))}
+              </div>
             </div>
 
-            {/* Column 2 - Quick Links */}
+
             <div>
-              <h3 className="relative inline-block text-sm font-semibold uppercase tracking-[0.2em] text-primary pb-1">
+              <h3 className="relative inline-block text-base font-semibold uppercase text-primary pb-1">
                 Quick Links
-                <span className="absolute left-0 bottom-0 h-[2px] w-6 bg-primary rounded-full"></span>
+                <span className="absolute left-0 bottom-0 h-1 w-6 bg-primary rounded-full"></span>
               </h3>
 
               <ul className="mt-4 space-y-2">
@@ -67,11 +89,10 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Column 3 - Popular Gifts */}
             <div>
-              <h3 className="relative inline-block text-sm font-semibold uppercase tracking-[0.2em] text-primary pb-1">
+              <h3 className="relative inline-block text-base font-semibold uppercase text-primary pb-1">
                 Popular Gifts
-                <span className="absolute left-0 bottom-0 h-[2px] w-6 bg-primary rounded-full"></span>
+                <span className="absolute left-0 bottom-0 h-1 w-6 bg-primary rounded-full"></span>
               </h3>
 
               <ul className="mt-4 space-y-2">
@@ -91,9 +112,9 @@ const Footer = () => {
 
             {/* Column 4 - Contact */}
             <div>
-              <h3 className="relative inline-block text-sm font-semibold uppercase tracking-[0.2em] text-primary pb-1">
+              <h3 className="relative inline-block text-base font-semibold uppercase text-primary pb-1">
                 Contact
-                <span className="absolute left-0 bottom-0 h-[2px] w-6 bg-primary rounded-full"></span>
+                <span className="absolute left-0 bottom-0 h-1 w-6 bg-primary rounded-full"></span>
               </h3>
 
               <div className="mt-4 space-y-3 text-sm text-muted-foreground">
