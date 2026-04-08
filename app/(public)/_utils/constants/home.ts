@@ -1,47 +1,44 @@
-import type {
-  HeroFeature,
-  HeroShowcase,
-  HeroStat,
-} from "../types/home";
+import type { GiftCategory } from "../types/home";
 
-export const heroStats: HeroStat[] = [
-  { value: "500+", label: "gift ideas curated for joyful moments" },
-  { value: "24h", label: "fast order support for last-minute surprises" },
-  { value: "4.9/5", label: "customer love from thoughtful gifting" },
-];
-
-export const heroFeatures: HeroFeature[] = [
+export const giftCategories: GiftCategory[] = [
   {
-    title: "Curated for every celebration",
-    description: "Birthday, anniversary, wedding, and surprise-ready picks.",
+    title: "Birthday Gifts",
+    image: "/images/birthday.png",
+    slug: "birthday-gifts",
   },
   {
-    title: "Elegant presentation",
-    description: "Premium wrapping, keepsake cards, and refined packaging.",
+    title: "Love & Romance",
+    image: "/images/categories/love.jpg",
+    slug: "love-romance",
   },
   {
-    title: "Island-wide convenience",
-    description: "Simple ordering flow with support that feels personal.",
-  },
-];
-
-export const heroShowcase: HeroShowcase[] = [
-  {
-    src: "/hero-curated-gift.svg",
-    alt: "Curated birthday gift box with ribbon and sweets",
-    eyebrow: "Birthday Edit",
-    title: "Curated gift boxes with warm, premium details",
+    title: "Anniversary",
+    image: "/images/categories/anniversary.jpg",
+    slug: "anniversary",
   },
   {
-    src: "/hero-floral-surprise.svg",
-    alt: "Romantic floral surprise arrangement with card",
-    eyebrow: "Anniversary Pick",
-    title: "Soft florals and keepsakes for meaningful surprises",
+    title: "Flowers & Bouquets",
+    image: "/images/categories/flowers.jpg",
+    slug: "flowers-bouquets",
   },
   {
-    src: "/hero-luxury-box.svg",
-    alt: "Luxury celebration hamper with cake and candle accents",
-    eyebrow: "Celebration Hamper",
-    title: "Elegant hampers styled for modern gifting moments",
+    title: "Cakes & Chocolates",
+    image: "/images/categories/cakes.jpg",
+    slug: "cakes-chocolates",
+  },
+  {
+    title: "Surprise Boxes",
+    image: "/images/categories/surprise.jpg",
+    slug: "surprise-boxes",
+  },
+  {
+    title: "Baby Gifts",
+    image: "/images/categories/baby.jpg",
+    slug: "baby-gifts",
+  },
+  {
+    title: "Custom Gifts",
+    image: "/images/categories/custom.jpg",
+    slug: "custom-gifts",
   },
 ];

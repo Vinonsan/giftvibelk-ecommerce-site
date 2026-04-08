@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Footer from "./components/layouts/Footer";
 import { Geist } from "next/font/google";
+import Header from "./components/layouts/Header";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -51,9 +53,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-LK" className={`${geistSans.variable} h-full antialiased`}>
-      <body suppressHydrationWarning className="min-h-full flex flex-col px-8">
-        {children}
+    <html lang="en-LK" className={`${geistSans.variable} h-full w-full antialiased`}>
+     
+      <body suppressHydrationWarning className="flex flex-col">
+         <Header />
+        <main className="flex flex-col gap-12 px-8 py-4">{children}</main>
+        <Footer />
       </body>
     </html>
   );
