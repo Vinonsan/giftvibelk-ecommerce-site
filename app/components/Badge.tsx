@@ -6,6 +6,7 @@ type BadgeSize = "sm" | "md";
 export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
   children: ReactNode;
   dot?: boolean;
+  glassified?: boolean;
   size?: BadgeSize;
   variant?: BadgeVariant;
 };
@@ -22,7 +23,7 @@ const variantClasses: Record<BadgeVariant, string> = {
 };
 
 const sizeClasses: Record<BadgeSize, string> = {
-  sm: "gap-1.5 px-2.5 py-1 text-[11px]",
+  sm: "gap-1.5 px-2.5 py-1 text-xs",
   md: "gap-2 px-3 py-1.5 text-xs",
 };
 
@@ -34,15 +35,20 @@ export default function Badge({
   children,
   className,
   dot = false,
+  glassified = false,
   size = "md",
   variant = "primary",
   ...props
 }: BadgeProps) {
+  const glassifiedClasses = glassified
+    ? "bg-white/10  backdrop-blur-md shadow-sm shadow-black/10"
+    : variantClasses[variant];
+
   return (
     <span
       className={cn(
         "inline-flex w-fit items-center rounded-full font-semibold tracking-wide",
-        variantClasses[variant],
+        glassifiedClasses,
         sizeClasses[size],
         className,
       )}

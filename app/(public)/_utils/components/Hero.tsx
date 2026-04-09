@@ -4,7 +4,7 @@ import Button from "@/app/components/Button"
 
 const Hero = () => {
   return (
-    <section className="py-8">
+    <section>
       <div className="grid items-start lg:grid-cols-2 ">
         <div className="flex flex-col gap-6">
           <Badge variant="dark" dot>
