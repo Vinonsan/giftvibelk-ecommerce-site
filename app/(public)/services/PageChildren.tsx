@@ -23,20 +23,6 @@ export default function PageChildren() {
         currentPage="Services"
         title="Services designed to make gifting feel effortless and premium."
         description="From ready-to-send gift boxes to custom orders and surprise delivery coordination, our service experience is built for people who want style, ease, and thoughtful details."
-        primaryAction={{
-          href: "/contact",
-          label: "Start an order",
-        }}
-        secondaryAction={{
-          href: "/about",
-          label: "Learn about us",
-          variant: "secondary",
-        }}
-        stats={[
-          { label: "Main service", value: "Curated and custom gifting" },
-          { label: "Best for", value: "Personal, family, and celebration moments" },
-          { label: "Experience", value: "Stylish packaging with guided support" },
-        ]}
       />
 
       <section className="grid gap-5 md:grid-cols-3">

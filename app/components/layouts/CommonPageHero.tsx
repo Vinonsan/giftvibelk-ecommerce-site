@@ -1,5 +1,6 @@
 import Badge from "@/app/components/Badge";
 import Link from "next/link";
+import Image from "next/image";
 
 type CommonPageHeroProps = {
   badge: string;
@@ -18,10 +19,12 @@ export default function CommonPageHero({
     <section className="relative py-6 h-screen">
       
       <div className="absolute inset-0 -z-10">
-        <img
+           <Image
           src="/images/secondaryhero.png"
           alt="Gift background"
-          className="h-full w-full object-cover"
+          fill
+          priority
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-black/2 backdrop-blur-lg" />
       </div>

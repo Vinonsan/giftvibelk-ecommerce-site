@@ -23,20 +23,6 @@ export default function PageChildren() {
         currentPage="Contact"
         title="Let’s plan a gift experience that feels special from start to finish."
         description="Reach out for custom gifting, delivery coordination, or help choosing the right surprise. We are here to make the process simple and thoughtful."
-        primaryAction={{
-          href: "/services",
-          label: "View services",
-        }}
-        secondaryAction={{
-          href: "/about",
-          label: "Our story",
-          variant: "secondary",
-        }}
-        stats={[
-          { label: "Need help with", value: "Custom gifts and surprise planning" },
-          { label: "Ideal for", value: "Fast guidance before placing an order" },
-          { label: "Support style", value: "Friendly, thoughtful, and responsive" },
-        ]}
       />
 
       <section className="grid gap-5 md:grid-cols-3">
