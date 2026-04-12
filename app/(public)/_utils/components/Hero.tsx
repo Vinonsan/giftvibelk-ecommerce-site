@@ -28,7 +28,7 @@ const Hero = () => {
             Shop now
             </Button>
 
-            <Button href="/contact" variant="secondary">
+            <Button href="/contact" variant="border">
               Order a custom gift
             </Button>
           </div>
@@ -36,7 +36,7 @@ const Hero = () => {
 
         <div>
           <Image
-            src="/images/herosection.png"
+            src="/images/1.png"
             alt="Curated birthday gift box with ribbon and sweets"
             width={820}
             height={760}

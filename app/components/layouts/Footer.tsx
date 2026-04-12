@@ -35,7 +35,7 @@ const Footer = () => {
             <div className="space-y-4 lg:col-span-2">
               <Link href="/" className="flex items-center gap-2">
                 <Image
-                  src="/logo/siteicon.png"
+                  src="/logo/test.png"
                   alt="Giftvibelk logo"
                   width={50}
                   height={50}
