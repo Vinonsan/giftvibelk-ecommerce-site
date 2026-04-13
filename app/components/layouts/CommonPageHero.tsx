@@ -1,5 +1,4 @@
 import Badge from "@/app/components/Badge";
-import Link from "next/link";
 import Image from "next/image";
 
 type CommonPageHeroProps = {
@@ -13,44 +12,39 @@ export default function CommonPageHero({
   badge,
   title,
   description,
-  currentPage,
 }: CommonPageHeroProps) {
   return (
-    <section className="relative py-6 h-screen">
+    <section className="relative flex items-center justify-center h-screen py-6">
       
-      <div className="absolute inset-0 -z-10">
-           <Image
-          src="/images/secondaryhero.png"
-          alt="Gift background"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-black/2 backdrop-blur-lg" />
-      </div>
+      {/* Background Image */}
+      <Image
+        src="/images/three.png"
+        alt="Gift background"
+        fill
+        priority
+        className="object-cover -z-10"
+      />
 
-      <div className="mx-auto flex flex-col items-center justify-center gap-6 text-center">
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/30 backdrop-blur-md -z-10" />
+
+      {/* Content */}
+      <div className="mx-auto flex flex-col items-center justify-center gap-6 text-center px-4">
         
-        <nav className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Link href="/" className="transition hover:text-primary">
-            Home
-          </Link>
-          <span className="opacity-50">/</span>
-          <span className="font-medium text-foreground">{currentPage}</span>
-        </nav>
-
-        <Badge variant="secondary" glassified dot>
+        <Badge variant="primary" glassified dot>
           {badge}
         </Badge>
 
-        <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+        <h1 className="text-4xl text-blue-50 font-semibold tracking-tight sm:text-5xl lg:text-6xl">
           {title}
         </h1>
 
-        <p className="max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">
+        <p className="max-w-3xl text-base leading-7 text-blue-50 sm:text-lg">
           {description}
         </p>
+
       </div>
+  
     </section>
   );
 }

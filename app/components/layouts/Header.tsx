@@ -9,8 +9,8 @@ import Svg from "../Svg";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
   { href: "/services", label: "Service" },
+  { href: "/contact", label: "Contact" },
 ];
 
 function cn(...classes: Array<string | false | null | undefined>) {
