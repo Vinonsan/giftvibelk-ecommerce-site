@@ -1,36 +1,54 @@
 import type { Metadata } from "next";
-import PageChildren from "./PageChildren";
+import { defaultOpenGraph, defaultTwitter } from "@/app/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Giftvibelk for custom gift orders, delivery coordination, and support for curated gift experiences in Sri Lanka.",
+    "Contact Giftvibelk for gifting support, product inquiries, delivery details, and custom order requests in Sri Lanka.",
   keywords: [
     "contact giftvibelk",
-    "gift order contact sri lanka",
-    "custom gift inquiry sri lanka",
-    "gift delivery support sri lanka",
+    "gift delivery sri lanka contact",
+    "custom gifts sri lanka contact",
   ],
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact Giftvibelk | Gift Support in Sri Lanka",
+    ...defaultOpenGraph,
+    title: "Contact Giftvibelk",
     description:
-      "Get in touch with Giftvibelk for custom orders, curated gifting support, and delivery coordination.",
+      "Reach Giftvibelk for order help, custom gifting requests, and delivery support across Sri Lanka.",
     url: "/contact",
-    siteName: "Giftvibelk",
-    locale: "en_LK",
-    type: "website",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Contact Giftvibelk | Gift Support in Sri Lanka",
+    ...defaultTwitter,
+    title: "Contact Giftvibelk",
     description:
-      "Reach out to Giftvibelk for custom gifting help, thoughtful recommendations, and delivery support.",
+      "Speak with Giftvibelk about orders, delivery, and personalized gifting support.",
   },
 };
 
 export default function ContactPage() {
-  return <PageChildren />;
+  return (
+    <section className="mx-auto flex w-full max-w-3xl flex-col gap-6 py-10">
+      <span className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
+        Contact
+      </span>
+      <h1 className="text-4xl font-semibold tracking-tight text-foreground">
+        Let&apos;s plan the right gift.
+      </h1>
+      <p className="leading-8 text-muted-foreground">
+        Need help selecting a gift, arranging delivery, or creating a custom
+        order? Our team is here to guide you with quick answers and practical
+        recommendations for every occasion.
+      </p>
+      <div className="rounded-3xl border border-primary/10 bg-card p-6">
+        <p className="text-sm uppercase tracking-[0.2em] text-primary">
+          Customer Support
+        </p>
+        <p className="mt-3 text-lg text-foreground">hello@giftvibelk.lk</p>
+        <p className="mt-2 text-muted-foreground">Colombo, Sri Lanka</p>
+      </div>
+    </section>
+  );
 }
