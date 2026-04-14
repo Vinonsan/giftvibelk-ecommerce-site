@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutPage() {
+const AboutPage = () => {
   return (
     <section className="mx-auto flex w-full max-w-4xl flex-col gap-6 py-10">
       <span className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
@@ -50,3 +50,5 @@ export default function AboutPage() {
     </section>
   );
 }
+
+export default AboutPage;

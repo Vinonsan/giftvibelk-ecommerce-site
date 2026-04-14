@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import PageChildren from "./(public)/_utils/PageChildren";
-import { defaultOpenGraph, defaultTwitter, siteConfig } from "./lib/seo";
+import PageChildren from "./_utils/PageChildren";
+import { defaultOpenGraph, defaultTwitter, siteConfig } from "../lib/seo";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -30,6 +30,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default function HomePage() {
   return <PageChildren />;
 }

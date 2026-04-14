@@ -57,7 +57,7 @@ export default function RootLayout({
      
       <body suppressHydrationWarning className="flex flex-col">
          <Header />
-        <main className="flex flex-col gap-12 px-8 py-4">{children}</main>
+        <main className="flex flex-col gap-12 ">{children}</main>
         <Footer />
       </body>
     </html>
