@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
 import Footer from "./components/layouts/Footer";
-import { Geist } from "next/font/google";
 import Header from "./components/layouts/Header";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -53,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-LK" className={`${geistSans.variable} h-full w-full antialiased`}>
+    <html lang="en-LK" className="h-full w-full antialiased">
      
       <body suppressHydrationWarning className="flex flex-col">
          <Header />

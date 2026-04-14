@@ -64,7 +64,7 @@ html {
 
 body {
   background: var(--background);
-  font-family: var(--font-geist-sans), sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 @keyframes cta-float {
