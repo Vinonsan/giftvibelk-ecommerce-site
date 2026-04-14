@@ -76,7 +76,7 @@ export default async function ProductDetailPage(props: ProductPageProps) {
 
   return (
     <article className="mx-auto grid w-full max-w-6xl gap-10 py-10 lg:grid-cols-[1.1fr_0.9fr]">
-      <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] border border-primary/10 bg-card">
+      <div className="relative min-h-105 overflow-hidden rounded-4xl border border-primary/10 bg-card">
         <Image
           src={product.image}
           alt={product.name}
@@ -96,7 +96,7 @@ export default async function ProductDetailPage(props: ProductPageProps) {
         <p className="text-lg leading-8 text-muted-foreground">
           {product.description}
         </p>
-        <dl className="grid gap-4 rounded-[2rem] border border-primary/10 bg-card p-6 sm:grid-cols-2">
+        <dl className="grid gap-4 rounded-4xl border border-primary/10 bg-card p-6 sm:grid-cols-2">
           <div>
             <dt className="text-sm uppercase tracking-[0.2em] text-primary">
               Price
