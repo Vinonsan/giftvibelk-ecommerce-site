@@ -48,9 +48,9 @@ const CTA = ({ title, description, primaryText, secondaryText }: CTAProps) => {
     <section className="relative overflow-hidden  border border-white rounded-3xl py-8">
       <div className="absolute inset-0 bg-[linear-gradient(135deg,#08090d_0%,#120507_36%,#1b0a0f_68%,#090b10_100%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(229,9,20,0.18),transparent_24%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_22%)]" />
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent" />
+      <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/25 to-transparent" />
 
-      <div className="absolute inset-0 [perspective:1600px]">
+      <div className="absolute inset-0 perspective-[1600px]">
         {globeField.map((globe) => (
           <span
             key={globe.id}
@@ -77,9 +77,9 @@ const CTA = ({ title, description, primaryText, secondaryText }: CTAProps) => {
         </p>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-          <Button variant="secondary">{primaryText}</Button>
+          <Button>{primaryText}</Button>
 
-          {secondaryText && <Button variant="primary">{secondaryText}</Button>}
+          {secondaryText && <Button variant="white">{secondaryText}</Button>}
         </div>
       </div>
     </section>

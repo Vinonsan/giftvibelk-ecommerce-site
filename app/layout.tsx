@@ -3,6 +3,7 @@ import Footer from "./components/layouts/Footer";
 import { Geist } from "next/font/google";
 import Header from "./components/layouts/Header";
 import "./globals.css";
+import { defaultOpenGraph, defaultTwitter, siteConfig } from "./lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,41 +11,40 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Giftvibelk | Online Gift Shop in Sri Lanka",
+    default: siteConfig.title,
     template: "%s | Giftvibelk",
   },
-  description:
-    "Giftvibelk is a Sri Lanka gift shop for birthdays, anniversaries, weddings, surprises, and heartfelt celebrations with stylish gift ideas for every occasion.",
-  keywords: [
-    "gift shop sri lanka",
-    "online gifts sri lanka",
-    "birthday gifts sri lanka",
-    "anniversary gifts sri lanka",
-    "wedding gifts sri lanka",
-    "gift delivery sri lanka",
-    "giftvibelk",
-  ],
-  applicationName: "Giftvibelk",
+  description: siteConfig.description,
+  keywords: [...siteConfig.keywords],
+  applicationName: siteConfig.name,
   category: "shopping",
-  openGraph: {
-    title: "Giftvibelk | Online Gift Shop in Sri Lanka",
-    description:
-      "Discover birthday, anniversary, wedding, and surprise gift collections for loved ones across Sri Lanka.",
-    siteName: "Giftvibelk",
-    locale: "en_LK",
-    type: "website",
+  alternates: {
+    canonical: "/",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Giftvibelk | Online Gift Shop in Sri Lanka",
-    description:
-      "Shop thoughtful gifts for birthdays, anniversaries, weddings, and celebrations in Sri Lanka.",
-  },
+  openGraph: defaultOpenGraph,
+  twitter: defaultTwitter,
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png" }],
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({
@@ -57,7 +57,7 @@ export default function RootLayout({
      
       <body suppressHydrationWarning className="flex flex-col">
          <Header />
-        <main className="flex flex-col gap-12 px-8 py-4">{children}</main>
+        <main className="flex flex-col gap-12 ">{children}</main>
         <Footer />
       </body>
     </html>

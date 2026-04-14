@@ -4,7 +4,7 @@ import Button from "@/app/components/Button"
 
 const Hero = () => {
   return (
-    <section className="py-8">
+    <section>
       <div className="grid items-start lg:grid-cols-2 ">
         <div className="flex flex-col gap-6">
           <Badge variant="dark" dot>
@@ -28,7 +28,7 @@ const Hero = () => {
             Shop now
             </Button>
 
-            <Button href="/contact" variant="secondary">
+            <Button href="/contact" variant="border">
               Order a custom gift
             </Button>
           </div>
@@ -36,7 +36,7 @@ const Hero = () => {
 
         <div>
           <Image
-            src="/images/herosection.png"
+            src="/images/1.png"
             alt="Curated birthday gift box with ribbon and sweets"
             width={820}
             height={760}

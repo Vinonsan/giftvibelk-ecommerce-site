@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -9,39 +9,76 @@ import Svg from "../Svg";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
   { href: "/services", label: "Service" },
+  { href: "/contact", label: "Contact" },
 ];
 
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
 
+function getPreferredTheme() {
+  if (typeof window === "undefined") {
+    return false;
+  }
+
+  const savedTheme = window.localStorage.getItem("theme");
+
+  if (savedTheme) {
+    return savedTheme === "dark";
+  }
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+function syncThemeAttribute(isDark: boolean) {
+  document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+}
+
+function emitThemeChange() {
+  window.dispatchEvent(new Event("themechange"));
+}
+
+function subscribeToTheme(onStoreChange: () => void) {
+  if (typeof window === "undefined") {
+    return () => {};
+  }
+
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const handleStorage = (event: StorageEvent) => {
+    if (!event.key || event.key === "theme") {
+      onStoreChange();
+    }
+  };
+
+  window.addEventListener("storage", handleStorage);
+  window.addEventListener("themechange", onStoreChange);
+  mediaQuery.addEventListener("change", onStoreChange);
+
+  return () => {
+    window.removeEventListener("storage", handleStorage);
+    window.removeEventListener("themechange", onStoreChange);
+    mediaQuery.removeEventListener("change", onStoreChange);
+  };
+}
+
 export default function Header() {
   const pathname = usePathname();
-  const [isDark, setIsDark] = useState(false);
+  const isDark = useSyncExternalStore(
+    subscribeToTheme,
+    getPreferredTheme,
+    () => false,
+  );
 
   useEffect(() => {
-    const savedTheme = window.localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const nextIsDark = savedTheme ? savedTheme === "dark" : prefersDark;
-
-    document.documentElement.setAttribute(
-      "data-theme",
-      nextIsDark ? "dark" : "light",
-    );
-    setIsDark(nextIsDark);
-  }, []);
+    syncThemeAttribute(isDark);
+  }, [isDark]);
 
   function toggleTheme() {
-    const nextIsDark = !isDark;
-
-    document.documentElement.setAttribute(
-      "data-theme",
-      nextIsDark ? "dark" : "light",
-    );
+    const nextIsDark = !getPreferredTheme();
     window.localStorage.setItem("theme", nextIsDark ? "dark" : "light");
-    setIsDark(nextIsDark);
+    syncThemeAttribute(nextIsDark);
+    emitThemeChange();
   }
 
   return (
@@ -67,8 +104,8 @@ export default function Header() {
               className={cn(
                 "rounded-full px-4 py-2 text-sm font-medium transition",
                 pathname === link.href
-                  ? "bg-black text-white"
-                  : "text-muted-foreground hover:bg-primary/8 hover:text-primary",
+                  ? "bg-secondary text-white"
+                  : "text-muted-foreground hover:bg-secondary/8 hover:text-secondary",
               )}
             >
               {link.label}

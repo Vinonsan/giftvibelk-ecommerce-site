@@ -7,7 +7,14 @@ import type {
   ReactNode,
 } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "none";
+type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "transparent"
+  | "none"
+  | "outline"
+  | "border"
+  | "white"
 type ButtonSize = "sm" | "md" | "lg";
 
 type BaseProps = {
@@ -34,8 +41,14 @@ const variantClasses: Record<ButtonVariant, string> = {
   primary:
     "bg-primary text-white shadow-lg shadow-primary/20 hover:bg-primary/80",
   secondary:
-    "border border-black/20 bg-white text-foreground hover:border-black hover:text-black ",
-  ghost:
+    "bg-secondary text-white shadow-lg shadow-secondary/20 hover:bg-secondary/80",
+  outline:
+    "border border-primary bg-transparent text-primary hover:bg-primary hover:text-white",
+  border:
+    "border border-secondary bg-transparent text-secondary hover:bg-secondary hover:text-white",
+  white:
+    "border border-white bg-transparent text-white hover:bg-white hover:text-secondary",
+  transparent:
     "bg-transparent text-foreground hover:bg-primary/8 hover:text-primary",
   none: "bg-transparent text-foreground hover:bg-transparent hover:text-primary",
 };

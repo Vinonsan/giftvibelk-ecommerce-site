@@ -36,7 +36,7 @@ const SpecialOfferCard = () => {
       <div>
         <div className="grid gap-10 lg:grid-cols-2 items-start">
           <div className="flex flex-col gap-5 lg:pr-10">
-            <Badge dot variant="secondary">
+            <Badge dot variant="primary">
               Limited Time Offer
             </Badge>
 
@@ -60,7 +60,7 @@ const SpecialOfferCard = () => {
 
             <div className="flex flex-wrap gap-4">
               <Button href="/services">Claim Offer</Button>
-              <Button href="/contact" variant="secondary">
+              <Button href="/contact" variant="border">
                 Customize a Gift
               </Button>
             </div>

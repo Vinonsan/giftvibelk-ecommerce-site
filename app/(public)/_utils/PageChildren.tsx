@@ -5,9 +5,10 @@ import FeaturedProducts from "./components/FeaturedProducts";
 import SpecialOfferCard from "./components/SpecialOfferCard";
 import Calltoaction from "@/app/components/layouts/Calltoaction";
 
-export default function PageChildren() {
+const PageChildren = () => {
   return (
     <Fragment>
+      <div className="px-8 py-12 flex flex-col gap-24">
       <Hero />
       <SpecialOfferCard />
       <FeaturedProducts />
@@ -18,6 +19,9 @@ export default function PageChildren() {
         primaryText="Get Started"
         secondaryText="Learn More"
       />
+      </div>
     </Fragment>
   );
 }
+
+export default PageChildren;
