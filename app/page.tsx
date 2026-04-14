@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageChildren from "./(public)/_utils/PageChildren";
+import { defaultOpenGraph, defaultTwitter, siteConfig } from "./lib/seo";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -15,17 +16,15 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Giftvibelk | Online Gift Shop in Sri Lanka",
+    ...defaultOpenGraph,
+    title: siteConfig.title,
     description:
       "Explore curated gift ideas for birthdays, anniversaries, weddings, and surprise celebrations across Sri Lanka.",
     url: "/",
-    siteName: "Giftvibelk",
-    locale: "en_LK",
-    type: "website",
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Giftvibelk | Online Gift Shop in Sri Lanka",
+    ...defaultTwitter,
+    title: siteConfig.title,
     description:
       "Discover thoughtful online gifts in Sri Lanka for every celebration with Giftvibelk.",
   },

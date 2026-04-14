@@ -19,29 +19,27 @@ function cn(...classes: Array<string | false | null | undefined>) {
 
 export default function Header() {
   const pathname = usePathname();
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === "undefined") {
+      return false;
+    }
 
-  useEffect(() => {
     const savedTheme = window.localStorage.getItem("theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const nextIsDark = savedTheme ? savedTheme === "dark" : prefersDark;
 
+    return savedTheme ? savedTheme === "dark" : prefersDark;
+  });
+
+  useEffect(() => {
     document.documentElement.setAttribute(
       "data-theme",
-      nextIsDark ? "dark" : "light",
+      isDark ? "dark" : "light",
     );
-    setIsDark(nextIsDark);
-  }, []);
+    window.localStorage.setItem("theme", isDark ? "dark" : "light");
+  }, [isDark]);
 
   function toggleTheme() {
-    const nextIsDark = !isDark;
-
-    document.documentElement.setAttribute(
-      "data-theme",
-      nextIsDark ? "dark" : "light",
-    );
-    window.localStorage.setItem("theme", nextIsDark ? "dark" : "light");
-    setIsDark(nextIsDark);
+    setIsDark((current) => !current);
   }
 
   return (
