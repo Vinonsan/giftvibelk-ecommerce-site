@@ -2,7 +2,6 @@ import { Fragment } from "react/jsx-runtime";
 import Hero from "./components/Hero";
 import Categories from "./components/Categories";
 import FeaturedProducts from "./components/FeaturedProducts";
-import SpecialOfferCard from "./components/SpecialOfferCard";
 import Calltoaction from "@/app/components/layouts/Calltoaction";
 import Testimonial from "./components/Testimonial";
 

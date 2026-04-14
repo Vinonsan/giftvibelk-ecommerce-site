@@ -5,7 +5,7 @@ import Mission from "./components/Mission";
 
 const PageChildren = () => {
   return (
-    <div >
+    <div>
       <CommonPageHero
         badge="Our Story"
         currentPage="About"
@@ -13,12 +13,12 @@ const PageChildren = () => {
         description="Giftvibelk brings together curated products, polished presentation, and dependable delivery so every surprise feels warm, memorable, and easy to arrange."
       />
       <div className="px-8 py-12 flex flex-col gap-24">
-      <Mission />
-      <HowItWorks />
-      <HowToOrder />
+        <Mission />
+        <HowItWorks />
+        <HowToOrder />
       </div>
     </div>
   );
-}
+};
 
 export default PageChildren;

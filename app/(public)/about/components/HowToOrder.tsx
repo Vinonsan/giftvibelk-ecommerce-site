@@ -1,5 +1,5 @@
 import Heading from "@/app/components/layouts/Heading";
-import { Gift, PenLine, ShoppingCart, Truck, ArrowRight } from "lucide-react";
+import { Gift, PenLine, ShoppingCart, Truck} from "lucide-react";
 
 const steps = [
   {
