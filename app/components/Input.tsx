@@ -14,7 +14,7 @@ export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size"> & {
 
 const stateClasses: Record<InputState, string> = {
   default:
-    "border-primary/12 focus-within:border-primary focus-within:ring-primary/15",
+    "border-secondary/12 focus-within:border-secondary focus-within:ring-secondary/15",
   error:
     "border-rose-300 focus-within:border-rose-500 focus-within:ring-rose-100",
   success:
