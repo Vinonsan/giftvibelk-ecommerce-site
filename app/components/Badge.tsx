@@ -12,9 +12,9 @@ export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
 };
 
 const variantClasses: Record<BadgeVariant, string> = {
-  primary: "border border-primary bg-primary/50 text-primary",
+  primary: "border border-primary bg-primary/10 text-primary",
   secondary:
-    "border border-secondary bg-secondary/50 text-secondary",
+    "border border-secondary bg-secondary/10 text-secondary",
   dark: "border border-gray-300 bg-gray-100 text-gray-700",
   success: "border border-emerald-300 bg-emerald-100 text-emerald-700",
   warning: "border border-amber-300 bg-amber-100 text-amber-700",
