@@ -37,15 +37,15 @@ const coveragePoints = [
 
 const DeliveryCoverage = () => {
   return (
-    <section className="py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section >
+
         <Heading
           badge="Delivery Coverage"
           title="Reliable delivery support for every special occasion"
         />
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <article className="relative overflow-hidden rounded-[32px] border border-primary/10 bg-secondary p-8 text-white sm:p-10">
+        <div className="mt-12 grid gap-6 lg:grid-cols-2">
+          <article className="relative overflow-hidden rounded-4xl border border-primary/10 bg-secondary p-8 text-white sm:p-10">
             <div className="absolute right-0 top-0 h-40 w-40 rounded-bl-[140px] bg-white/10" />
 
             <div className="relative">
@@ -106,7 +106,7 @@ const DeliveryCoverage = () => {
             ))}
           </div>
         </div>
-      </div>
+  
     </section>
   );
 };
