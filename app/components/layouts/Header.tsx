@@ -9,12 +9,20 @@ import Svg from "../Svg";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/services", label: "Service" },
+  { href: "/services", label: "Services" },
   { href: "/contact", label: "Contact" },
 ];
 
 function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
+}
+
+function isActiveLink(pathname: string, href: string) {
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
 }
 
 function getPreferredTheme() {
@@ -96,21 +104,25 @@ export default function Header() {
         </Link>
 
         <nav className="hidden items-center gap-2 rounded-full border border-primary/10 px-2 py-2 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              aria-current={pathname === link.href ? "page" : undefined}
-              className={cn(
-                "rounded-full px-4 py-2 text-sm font-medium transition",
-                pathname === link.href
-                  ? "bg-secondary text-white"
-                  : "text-muted-foreground hover:bg-secondary/8 hover:text-secondary",
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = isActiveLink(pathname, link.href);
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-medium transition",
+                  isActive
+                    ? "bg-secondary text-white shadow-[0_10px_24px_rgba(11,31,58,0.16)]"
+                    : "text-muted-foreground hover:bg-secondary/8 hover:text-secondary",
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -135,21 +147,25 @@ export default function Header() {
 
       <nav className="border-t border-primary/10 px-4 py-3 md:hidden sm:px-6">
         <div className="flex flex-wrap gap-2">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              aria-current={pathname === link.href ? "page" : undefined}
-              className={cn(
-                "rounded-full border px-4 py-2 text-sm font-medium transition",
-                pathname === link.href
-                  ? "border-primary bg-primary text-white"
-                  : "border-primary/10 text-muted-foreground hover:border-primary hover:text-primary",
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = isActiveLink(pathname, link.href);
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "rounded-full border px-4 py-2 text-sm font-medium transition",
+                  isActive
+                    ? "border-primary bg-primary text-white"
+                    : "border-primary/10 text-muted-foreground hover:border-primary hover:text-primary",
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
       </nav>
     </header>
