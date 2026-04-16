@@ -37,7 +37,7 @@ export default function NotFoundScreen() {
               Back
             </Button>
 
-            <Button href="/" variant="primary">
+            <Button onClick={() => router.push("/")} variant="primary">
               <Home size={18} />
               Home
             </Button>
