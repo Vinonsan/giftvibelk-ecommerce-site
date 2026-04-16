@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { defaultOpenGraph, defaultTwitter } from "@/app/lib/seo";
+import PageChildren from "./PageChildren";
 
 export const metadata: Metadata = {
   title: "About",
@@ -29,26 +30,7 @@ export const metadata: Metadata = {
 };
 
 const AboutPage = () => {
-  return (
-    <section className="mx-auto flex w-full max-w-4xl flex-col gap-6 py-10">
-      <span className="text-sm font-semibold uppercase tracking-[0.25em] text-primary">
-        About Giftvibelk
-      </span>
-      <h1 className="text-4xl font-semibold tracking-tight text-foreground">
-        Curated gifts designed for life&apos;s biggest moments.
-      </h1>
-      <p className="text-lg leading-8 text-muted-foreground">
-        Giftvibelk helps people in Sri Lanka celebrate birthdays,
-        anniversaries, weddings, and surprise milestones with thoughtfully
-        curated gifts that feel personal and polished.
-      </p>
-      <p className="leading-8 text-muted-foreground">
-        Our focus is simple: make gifting easier, more elegant, and more
-        memorable with quality presentation, reliable local delivery, and
-        collections built around real occasions.
-      </p>
-    </section>
-  );
-}
+  return <PageChildren />;
+};
 
 export default AboutPage;

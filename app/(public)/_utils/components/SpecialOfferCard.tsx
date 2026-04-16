@@ -76,7 +76,7 @@ const SpecialOfferCard = () => {
                 className="w-full h-full object-cover"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/10 to-transparent" />
 
               <div className="absolute top-4 left-4 flex gap-2 sm:gap-3">
                 {[days, hours, minutes, seconds].map((val, i) => {
@@ -85,7 +85,7 @@ const SpecialOfferCard = () => {
                   return (
                     <div
                       key={i}
-                      className="flex flex-col items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 rounded-lg px-3 py-2 min-w-[60px]"
+                      className="flex flex-col items-center justify-center bg-white/10 backdrop-blur-md border border-white/20 rounded-lg px-3 py-2 min-w-15"
                     >
                       <span className="text-lg font-bold text-white">
                         {String(val).padStart(2, "0")}
@@ -116,7 +116,7 @@ const SpecialOfferCard = () => {
                 src={src}
                 alt={`Gift ${i + 1}`}
                 fill
-                className="object-cover transition duration-300 group-hover:scale-110 group-hover:rotate-[1deg]"
+                className="object-cover transition duration-300 group-hover:scale-110 group-hover:rotate-1"
               />
             </div>
           ))}
