@@ -5,7 +5,6 @@ import {
   Clock3,
   ShieldCheck,
   MessageCircleMore,
-  BadgeCheck,
 } from "lucide-react";
 
 const coveragePoints = [

@@ -9,6 +9,8 @@ interface DevLoggerOptions {
 }
 
 export function createDevLogger(_options: DevLoggerOptions = {}): AppMiddleware {
+  void _options
+
   return (store) => (next) => (action) => {
     if (!isDevelopment()) {
       return next(action)
