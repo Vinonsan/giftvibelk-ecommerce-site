@@ -1,5 +1,7 @@
 import "./globals.css";
 
+import { StoreProvider } from "@/lib/redux/hooks";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -7,7 +9,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <StoreProvider>{children}</StoreProvider>
+      </body>
     </html>
   );
 }
