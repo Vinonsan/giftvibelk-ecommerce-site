@@ -28,7 +28,7 @@ const Footer = () => {
   return (
     <footer aria-label="Footer">
       <div className="mx-auto">
-        <div className="bg-card px-8 py-6">
+        <div className="bg-secondary px-8 py-6 text-white">
           
           <div className="grid grid-cols-2 gap-10 lg:grid-cols-5 lg:gap-12">
 
@@ -41,12 +41,12 @@ const Footer = () => {
                   height={50}
                   className="object-contain"
                 />
-                <span className="text-xl font-bold text-black">
+                <span className="text-xl font-bold text-white">
                   GiftVibe<span className="text-primary">LK</span>
                 </span>
               </Link>
 
-              <p className="text-base text-black/70">
+              <p className="text-base text-white/70">
                 Thoughtful gifting across Sri Lanka with curated hampers,
                 flowers, cakes, and custom surprises for every celebration.
               </p>
@@ -59,7 +59,7 @@ const Footer = () => {
                     aria-label={label}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-primary/15 bg-white text-black/75 transition hover:border-primary hover:text-primary"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white/80 transition hover:border-primary hover:text-primary"
                   >
                     <Svg name={icon} className="h-5 w-5" />
                   </Link>
@@ -80,7 +80,7 @@ const Footer = () => {
                     <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition"
+                      className="text-sm text-white/70 hover:text-primary transition"
                     >
                       {link.label}
                     </Link>
@@ -101,7 +101,7 @@ const Footer = () => {
                     <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition"
+                      className="text-sm text-white/70 hover:text-primary transition"
                     >
                       {link.label}
                     </Link>
@@ -117,7 +117,7 @@ const Footer = () => {
                 <span className="absolute left-0 bottom-0 h-1 w-6 bg-primary rounded-full"></span>
               </h3>
 
-              <div className="mt-4 space-y-3 text-sm text-muted-foreground">
+              <div className="mt-4 space-y-3 text-sm text-white/70">
 
                 <div className="flex items-center gap-2">
                   <Mail size={16} className="text-primary" />
@@ -141,9 +141,9 @@ const Footer = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-10 border-t border-primary/10 pt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-sm text-muted-foreground">
+          <div className="mt-10 border-t border-white/10 pt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-sm text-white/60">
             
-            <p>© 2026 Giftvibelk. All rights reserved.</p>
+            <p>&copy; 2026 Giftvibelk. All rights reserved.</p>
 
             <div className="flex gap-4">
               <Link href="/privacy-policy" className="hover:text-primary transition">

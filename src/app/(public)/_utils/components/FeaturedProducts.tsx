@@ -66,7 +66,7 @@ const FeaturedProducts = () => {
     <section aria-label="Featured gift products" >
       <div className="space-y-12">
         <Heading
-          badge="Popular Picks"
+          tag="Popular Picks"
           title="Featured Gift Products"
         />
 

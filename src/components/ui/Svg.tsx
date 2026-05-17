@@ -2,6 +2,7 @@ import type { SVGProps } from "react";
 
 type SvgName =
   | "cart"
+  | "gift"
   | "sun"
   | "moon"
   | "facebook"
@@ -14,6 +15,28 @@ export type SvgProps = SVGProps<SVGSVGElement> & {
 };
 
 export default function Svg({ name, ...props }: SvgProps) {
+  if (name === "gift") {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+        {...props}
+      >
+        <path d="M4.5 10h15" />
+        <path d="M6 10v9a1.5 1.5 0 0 0 1.5 1.5h9A1.5 1.5 0 0 0 18 19v-9" />
+        <path d="M5 6.5A1.5 1.5 0 0 1 6.5 5H18a1.5 1.5 0 0 1 1.5 1.5V10h-15V6.5Z" />
+        <path d="M12 5v15.5" />
+        <path d="M9.2 3.5c1.9 0 2.8 1.5 2.8 1.5S11.1 6.5 9.2 6.5 6.8 5.8 6.8 5s.5-1.5 2.4-1.5Z" />
+        <path d="M14.8 3.5C12.9 3.5 12 5 12 5s.9 1.5 2.8 1.5 2.4-.7 2.4-1.5-.5-1.5-2.4-1.5Z" />
+      </svg>
+    );
+  }
+
   if (name === "cart") {
     return (
       <svg

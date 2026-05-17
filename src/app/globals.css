@@ -1,29 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  --theme-light: #F8FAFC;
-  --theme-dark: #0B1220;
-  --theme-primary: #a30b0f;
-  --theme-secondary: #0B1F3A;
+  --theme-light: #faf4ec;
+  --theme-dark: #091413;
+  --theme-primary: #810B38;
+  --theme-secondary: #541A1A;
   --theme-success: #1e7e34;
   --theme-error: #dc3545;
+  --theme-background: var(--theme-light);
+  --theme-foreground: var(--theme-dark);
 }
 
 [data-theme="dark"] {
-  --theme-light: #f8fafc;
-  --theme-dark: #0B1220;
-  --theme-primary: #75081a;
-  --theme-secondary: #0B1F3A;
+  --theme-primary: #f39ebf;
+  --theme-secondary: #f8b5b5;
   --theme-success: #1e7e34;
   --theme-error: #dc3545;
+  --theme-background: var(--theme-dark);
+  --theme-foreground: var(--theme-light);
 }
 
 @theme inline {
-  --background: var(--theme-light);
-  --primary: var(--theme-primary);
-  --secondary: var(--theme-secondary);
-  --success: var(--theme-success);
-  --error: var(--theme-error);
+  --color-background: var(--theme-background);
+  --color-foreground: var(--theme-foreground);
+  --color-muted-foreground: var(--theme-muted-foreground);
+  --color-card: var(--theme-card);
+  --color-primary: var(--theme-primary);
+  --color-secondary: var(--theme-secondary);
+  --color-success: var(--theme-success);
+  --color-error: var(--theme-error);
 }
 
 html {
@@ -31,7 +36,8 @@ html {
 }
 
 body {
-  background: var(--background);
+  background: var(--theme-background);
+  color: var(--theme-foreground);
   font-family:
     "Segoe UI",
     Tahoma,

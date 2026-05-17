@@ -7,7 +7,7 @@ const Hero = () => {
     <section>
       <div className="grid items-start lg:grid-cols-2 ">
         <div className="flex flex-col gap-6">
-          <Badge variant="dark" dot>
+          <Badge variant="secondary" dot>
             Gift Delivery in Sri Lanka
           </Badge>
 
@@ -28,7 +28,7 @@ const Hero = () => {
             Shop now
             </Button>
 
-            <Button href="/contact" variant="border">
+            <Button href="/contact" variant="secondary">
               Order a custom gift
             </Button>
           </div>
@@ -36,7 +36,7 @@ const Hero = () => {
 
         <div>
           <Image
-            src="/images/1.png"
+            src="/images/4.png"
             alt="Curated birthday gift box with ribbon and sweets"
             width={820}
             height={760}

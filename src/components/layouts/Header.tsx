@@ -55,7 +55,7 @@ export default function Header() {
                   "rounded-full px-4 py-2 text-sm font-medium transition",
                   isActive
                     ? "bg-secondary text-white shadow-[0_10px_24px_rgba(11,31,58,0.16)]"
-                    : "text-muted-foreground hover:bg-secondary/8 hover:text-secondary",
+                    : "text-muted-foreground hover:bg-secondary/10 hover:text-secondary",
                 )}
               >
                 {link.label}
@@ -70,7 +70,7 @@ export default function Header() {
           <Link
             href="/cart"
             aria-label="Open cart"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary/12 text-foreground transition hover:border-primary hover:text-primary"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary/10 text-foreground transition hover:border-primary hover:text-primary"
           >
             <Svg name="cart" className="h-5 w-5" />
           </Link>

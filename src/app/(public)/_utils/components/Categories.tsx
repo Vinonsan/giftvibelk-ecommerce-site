@@ -10,7 +10,7 @@ const Categories = () => {
     <section aria-label="Gift categories Sri Lanka" >
       <div className="space-y-12">
         <Heading
-          badge="Giftvibelk Collections"
+          tag="Giftvibelk Collections"
           title="Explore Gift Categories"
         />
 
@@ -19,7 +19,7 @@ const Categories = () => {
             <Link
               key={category.slug}
               href={`/categories/${category.slug}`}
-              className="group overflow-hidden rounded-2xl border border-primary/10 bg-white dark:bg-muted/20 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+              className="group overflow-hidden rounded-2xl border border-primary/10   shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="relative h-80 w-full overflow-hidden">
                 <Image
