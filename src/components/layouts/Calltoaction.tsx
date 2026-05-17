@@ -2,12 +2,16 @@
 
 import Button from "@/components/ui/Button";
 import type { CSSProperties } from "react";
+import { useRouter } from "next/navigation";
 
 interface CTAProps {
   title: string;
   description: string;
+  badge: string;
   primaryText: string;
+  primaryHref: string;
   secondaryText?: string;
+  secondaryHref?: string;
 }
 
 const globeField = Array.from({ length: 100 }, (_, index) => {
@@ -43,7 +47,17 @@ const globeField = Array.from({ length: 100 }, (_, index) => {
   };
 });
 
-const CTA = ({ title, description, primaryText, secondaryText }: CTAProps) => {
+const CTA = ({
+  title,
+  description,
+  badge,
+  primaryText,
+  primaryHref,
+  secondaryText,
+  secondaryHref,
+}: CTAProps) => {
+  const router = useRouter();
+
   return (
     <section className="relative overflow-hidden  border border-white rounded-3xl py-8">
       <div className="absolute inset-0 bg-[linear-gradient(135deg,#08090d_0%,#120507_36%,#1b0a0f_68%,#090b10_100%)]" />
@@ -65,7 +79,7 @@ const CTA = ({ title, description, primaryText, secondaryText }: CTAProps) => {
 
       <div className="relative z-10 mx-auto flex  flex-col gap-6 items-center justify-center px-6 py-4 text-center">
         <div className="inline-flex items-center rounded-full border border-white/15 bg-white/7 px-4 py-2 text-xs font-semibold uppercase  text-white/70">
-          Globe motion background
+          {badge}
         </div>
 
         <h2 className="text-4xl font-semibold  text-white sm:text-5xl lg:text-6xl">
@@ -77,9 +91,16 @@ const CTA = ({ title, description, primaryText, secondaryText }: CTAProps) => {
         </p>
 
         <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
-          <Button>{primaryText}</Button>
+          <Button onClick={() => router.push(primaryHref)}>{primaryText}</Button>
 
-          {secondaryText && <Button variant="white">{secondaryText}</Button>}
+          {secondaryText && secondaryHref ? (
+            <Button
+              variant="white"
+              onClick={() => router.push(secondaryHref)}
+            >
+              {secondaryText}
+            </Button>
+          ) : null}
         </div>
       </div>
     </section>

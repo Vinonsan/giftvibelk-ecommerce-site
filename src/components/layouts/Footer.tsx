@@ -28,25 +28,25 @@ const Footer = () => {
   return (
     <footer aria-label="Footer">
       <div className="mx-auto">
-        <div className="bg-secondary px-8 py-6 text-white">
+        <div className="bg-background border-t border-t-primary/10 px-8 py-6 text-foreground">
           
           <div className="grid grid-cols-2 gap-10 lg:grid-cols-5 lg:gap-12">
 
             <div className="space-y-4 lg:col-span-2">
               <Link href="/" className="flex items-center gap-2">
                 <Image
-                  src="/logo/test.png"
+                  src="/logo/5.png"
                   alt="Giftvibelk logo"
                   width={50}
                   height={50}
-                  className="object-contain"
+                  className="object-contain rounded-xl bg-primary/5 "
                 />
-                <span className="text-xl font-bold text-white">
+                <span className="text-xl font-bold text-foreground">
                   GiftVibe<span className="text-primary">LK</span>
                 </span>
               </Link>
 
-              <p className="text-base text-white/70">
+              <p className="text-base text-foreground">
                 Thoughtful gifting across Sri Lanka with curated hampers,
                 flowers, cakes, and custom surprises for every celebration.
               </p>
@@ -59,7 +59,7 @@ const Footer = () => {
                     aria-label={label}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white/80 transition hover:border-primary hover:text-primary"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-secondary bg-secondary/10 text-secondary transition hover:border-primary hover:text-primary"
                   >
                     <Svg name={icon} className="h-5 w-5" />
                   </Link>
@@ -80,7 +80,7 @@ const Footer = () => {
                     <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/70 hover:text-primary transition"
+                      className="text-sm text-foreground hover:text-primary transition"
                     >
                       {link.label}
                     </Link>
@@ -101,7 +101,7 @@ const Footer = () => {
                     <span className="h-1.5 w-1.5 rounded-full bg-primary"></span>
                     <Link
                       href={link.href}
-                      className="text-sm text-white/70 hover:text-primary transition"
+                      className="text-sm text-foreground hover:text-primary transition"
                     >
                       {link.label}
                     </Link>
@@ -117,7 +117,7 @@ const Footer = () => {
                 <span className="absolute left-0 bottom-0 h-1 w-6 bg-primary rounded-full"></span>
               </h3>
 
-              <div className="mt-4 space-y-3 text-sm text-white/70">
+              <div className="mt-4 space-y-3 text-sm text-foreground">
 
                 <div className="flex items-center gap-2">
                   <Mail size={16} className="text-primary" />
@@ -126,7 +126,7 @@ const Footer = () => {
 
                 <div className="flex items-center gap-2">
                   <Phone size={16} className="text-primary" />
-                  <span>+94 77 123 4567</span>
+                  <span>0754476969</span>
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -141,7 +141,7 @@ const Footer = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-10 border-t border-white/10 pt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-sm text-white/60">
+          <div className="mt-10 border-t border-primary/10 pt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-sm text-foreground">
             
             <p>&copy; 2026 Giftvibelk. All rights reserved.</p>
 

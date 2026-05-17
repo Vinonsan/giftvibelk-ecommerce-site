@@ -15,10 +15,13 @@ const PageChildren = () => {
       <FeaturedProducts />
       <Testimonial />
       <Calltoaction
-        title="Ready to Elevate Your Style?"
-        description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, voluptate."
-        primaryText="Get Started"
-        secondaryText="Learn More"
+        badge="Gift with love"
+        title="Discover the Story Behind GiftVibeLK"
+        description="Learn more about our passion for creating memorable gifts, premium collections, and joyful moments for every special occasion."
+        primaryText="About Us"
+        primaryHref="/about"
+        secondaryText="Explore More"
+        secondaryHref="/services"
       />
       </div>
     </Fragment>

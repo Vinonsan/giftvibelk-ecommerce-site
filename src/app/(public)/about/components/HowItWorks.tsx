@@ -66,7 +66,7 @@ export default function HowItWorks() {
         {services.map(({ icon: Icon, title, description, badge }) => (
           <article
             key={title}
-            className="rounded-3xl border border-primary/10 bg-[#fcfcfc] p-6 transition duration-300 hover:-translate-y-1 hover:shadow-md sm:p-7"
+            className="rounded-3xl border border-primary/10  p-6 transition duration-300 hover:-translate-y-1 hover:shadow-md sm:p-7"
           >
             <div className="flex items-start justify-between gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">

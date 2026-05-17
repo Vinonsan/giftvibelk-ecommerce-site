@@ -4,6 +4,7 @@ import Svg from "@/components/ui/Svg";
 type HeadingProps = {
   title: string;
   subtitle?: string;
+  badge?: string;
   tag?: string;
   align?: "left" | "center";
 };
@@ -15,6 +16,7 @@ function cn(...classes: Array<string | false | null | undefined>) {
 const Heading = ({
   title,
   subtitle,
+  badge,
   tag,
   align = "center",
 }: HeadingProps) => {
@@ -22,6 +24,7 @@ const Heading = ({
   const lastWord = words.pop();
   const firstPart = words.join(" ");
   const isCenter = align === "center";
+  const label = tag ?? badge;
 
   return (
     <div
@@ -31,7 +34,7 @@ const Heading = ({
       )}
     >
       {/* Top Text */}
-      {tag && (
+      {label && (
         <div
           className={cn(
             "mb-5 flex items-center gap-4",
@@ -42,7 +45,7 @@ const Heading = ({
 
           <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.35em] text-primary">
             <Svg name="gift" className="h-4 w-4" />
-            {tag}
+            {label}
           </p>
 
           <span className="h-px w-14 bg-primary/30" />

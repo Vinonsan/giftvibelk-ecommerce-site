@@ -31,15 +31,20 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-primary/10 bg-background/95 backdrop-blur">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center">
+        <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/logo/Logo.svg"
+            src="/logo/4.png"
             alt="Giftvibelk logo"
             width={180}
             height={60}
             priority
-            className="h-12 w-auto object-contain sm:h-14"
+            className="h-12 w-auto object-contain sm:h-14 bg-primary/5 rounded-xl p-2"
           />
+          <div>
+            <span className="text-xl font-bold text-foreground">
+              GiftVibe<span className="text-primary">LK</span>
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-2 rounded-full border border-primary/10 px-2 py-2 md:flex">
