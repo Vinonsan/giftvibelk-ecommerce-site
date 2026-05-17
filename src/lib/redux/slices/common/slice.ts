@@ -83,6 +83,12 @@ export function commonReducer(
       }
     }
 
+    case 'common/setSidebarCollapsed':
+      return {
+        ...state,
+        isSidebarCollapsed: action.payload,
+      }
+
     case 'common/reset':
       return commonInitialState
 
@@ -114,6 +120,11 @@ export const requestFailed = (key: string, error: string): CommonAction => ({
 export const clearRequest = (key: string): CommonAction => ({
   type: 'common/clearRequest',
   payload: { key },
+})
+
+export const setSidebarCollapsed = (payload: boolean): CommonAction => ({
+  type: 'common/setSidebarCollapsed',
+  payload,
 })
 
 export const resetCommonState = (): CommonAction => ({

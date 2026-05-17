@@ -4,4 +4,5 @@ export const commonInitialState: CommonState = {
   authToken: null,
   requests: {},
   lastError: null,
+  isSidebarCollapsed: false,
 }

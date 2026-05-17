@@ -1,61 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F8FAFC;
-  --primary: #a30b0f;
-  --secondary: #0B1F3A;
-  --hero-surface:
-    radial-gradient(circle at top right, rgba(163, 11, 15, 0.12), transparent 34%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.92));
-  --hero-border: rgba(163, 11, 15, 0.12);
-  --hero-shadow: 0 24px 70px rgba(11, 31, 58, 0.12);
-  --hero-title: #08111f;
-  --hero-copy: #475569;
-  --hero-badge-bg: rgba(255, 255, 255, 0.72);
-  --hero-badge-border: rgba(11, 31, 58, 0.12);
-  --hero-image-surface:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.92), transparent 30%),
-    linear-gradient(160deg, rgba(163, 11, 15, 0.1), rgba(11, 31, 58, 0.08));
-  --hero-image-border: rgba(255, 255, 255, 0.75);
-  --hero-image-shadow: 0 32px 60px rgba(11, 31, 58, 0.16);
-  --hero-image-glow:
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.55), transparent 30%),
-    radial-gradient(circle at 80% 85%, rgba(163, 11, 15, 0.18), transparent 25%);
-  --hero-secondary-button-border: rgba(11, 31, 58, 0.3);
-  --hero-secondary-button-bg: rgba(255, 255, 255, 0.55);
-  --hero-secondary-button-text: #0B1F3A;
+  --theme-light: #F8FAFC;
+  --theme-dark: #0B1220;
+  --theme-primary: #a30b0f;
+  --theme-secondary: #0B1F3A;
+  --theme-success: #1e7e34;
+  --theme-error: #dc3545;
 }
 
 [data-theme="dark"] {
-  --background: #0B1220;
-  --primary: #75081a;
-  --secondary: #0B1F3A;
-  --hero-surface:
-    radial-gradient(circle at top right, rgba(211, 47, 47, 0.2), transparent 30%),
-    linear-gradient(145deg, rgba(10, 16, 29, 0.96), rgba(17, 24, 39, 0.92));
-  --hero-border: rgba(255, 255, 255, 0.08);
-  --hero-shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
-  --hero-title: #f8fafc;
-  --hero-copy: #cbd5e1;
-  --hero-badge-bg: rgba(11, 18, 32, 0.68);
-  --hero-badge-border: rgba(255, 255, 255, 0.12);
-  --hero-image-surface:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.12), transparent 28%),
-    linear-gradient(160deg, rgba(117, 8, 26, 0.28), rgba(11, 31, 58, 0.55));
-  --hero-image-border: rgba(255, 255, 255, 0.08);
-  --hero-image-shadow: 0 36px 80px rgba(0, 0, 0, 0.5);
-  --hero-image-glow:
-    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.08), transparent 28%),
-    radial-gradient(circle at 82% 78%, rgba(163, 11, 15, 0.24), transparent 24%);
-  --hero-secondary-button-border: rgba(255, 255, 255, 0.16);
-  --hero-secondary-button-bg: rgba(11, 18, 32, 0.35);
-  --hero-secondary-button-text: #f8fafc;
+  --theme-light: #f8fafc;
+  --theme-dark: #0B1220;
+  --theme-primary: #75081a;
+  --theme-secondary: #0B1F3A;
+  --theme-success: #1e7e34;
+  --theme-error: #dc3545;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
+  --background: var(--theme-light);
+  --primary: var(--theme-primary);
+  --secondary: var(--theme-secondary);
+  --success: var(--theme-success);
+  --error: var(--theme-error);
 }
 
 html {

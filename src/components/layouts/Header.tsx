@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import Svg from "@/components/ui/Svg";
 
 const navLinks = [
@@ -25,69 +25,8 @@ function isActiveLink(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-function getPreferredTheme() {
-  if (typeof window === "undefined") {
-    return false;
-  }
-
-  const savedTheme = window.localStorage.getItem("theme");
-
-  if (savedTheme) {
-    return savedTheme === "dark";
-  }
-
-  return window.matchMedia("(prefers-color-scheme: dark)").matches;
-}
-
-function syncThemeAttribute(isDark: boolean) {
-  document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
-}
-
-function emitThemeChange() {
-  window.dispatchEvent(new Event("themechange"));
-}
-
-function subscribeToTheme(onStoreChange: () => void) {
-  if (typeof window === "undefined") {
-    return () => {};
-  }
-
-  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-  const handleStorage = (event: StorageEvent) => {
-    if (!event.key || event.key === "theme") {
-      onStoreChange();
-    }
-  };
-
-  window.addEventListener("storage", handleStorage);
-  window.addEventListener("themechange", onStoreChange);
-  mediaQuery.addEventListener("change", onStoreChange);
-
-  return () => {
-    window.removeEventListener("storage", handleStorage);
-    window.removeEventListener("themechange", onStoreChange);
-    mediaQuery.removeEventListener("change", onStoreChange);
-  };
-}
-
 export default function Header() {
   const pathname = usePathname();
-  const isDark = useSyncExternalStore(
-    subscribeToTheme,
-    getPreferredTheme,
-    () => false,
-  );
-
-  useEffect(() => {
-    syncThemeAttribute(isDark);
-  }, [isDark]);
-
-  function toggleTheme() {
-    const nextIsDark = !getPreferredTheme();
-    window.localStorage.setItem("theme", nextIsDark ? "dark" : "light");
-    syncThemeAttribute(nextIsDark);
-    emitThemeChange();
-  }
 
   return (
     <header className="sticky top-0 z-40 border-b border-primary/10 bg-background/95 backdrop-blur">
@@ -126,14 +65,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button
-            type="button"
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            onClick={toggleTheme}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary/12 text-foreground transition hover:border-primary hover:text-primary"
-          >
-            <Svg name={isDark ? "sun" : "moon"} className="h-5 w-5" />
-          </button>
+          <ThemeToggle />
 
           <Link
             href="/cart"
