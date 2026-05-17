@@ -31,7 +31,7 @@ const ContactForm = () => {
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full rounded-xl border border-primary/10 bg-[#fafafa] py-3 pl-10 pr-4 text-sm outline-none focus:border-primary"
+                className="w-full rounded-xl border border-primary/10  py-3 pl-10 pr-4 text-sm outline-none focus:border-primary"
               />
             </div>
 
@@ -41,7 +41,7 @@ const ContactForm = () => {
               <input
                 type="tel"
                 placeholder="Phone Number"
-                className="w-full rounded-xl border border-primary/10 bg-[#fafafa] py-3 pl-10 pr-4 text-sm outline-none focus:border-primary"
+                className="w-full rounded-xl border border-primary/10  py-3 pl-10 pr-4 text-sm outline-none focus:border-primary"
               />
             </div>
 
@@ -51,7 +51,7 @@ const ContactForm = () => {
                 defaultValue=""
                 options={occasionOptions}
                 leadingIcon={<Gift size={18} />}
-                className="rounded-xl border-primary/10 bg-[#fafafa] focus-within:border-primary focus-within:ring-primary/10 w-full"
+                className="rounded-xl border-primary/10  focus-within:border-primary focus-within:ring-primary/10 w-full"
               />
 
 
@@ -61,7 +61,7 @@ const ContactForm = () => {
               <textarea
                 rows={4}
                 placeholder="Write your message or gift details..."
-                className="w-full rounded-xl border border-primary/10 bg-[#fafafa] py-3 pl-10 pr-4 text-sm outline-none focus:border-primary"
+                className="w-full rounded-xl border border-primary/10  py-3 pl-10 pr-4 text-sm outline-none focus:border-primary"
               />
             </div>
 

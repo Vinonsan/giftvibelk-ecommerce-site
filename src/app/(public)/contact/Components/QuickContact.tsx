@@ -36,10 +36,10 @@ const QuickContact = () => {
   return (
     <section >
       <div className="mx-auto ">
-        <div className="overflow-hidden rounded-4xl border border-primary/10 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.05)]">
+        <div className="overflow-hidden rounded-4xl border border-primary/10 shadow-[0_20px_60px_rgba(0,0,0,0.05)]">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="relative bg-primary px-6 py-10 text-white sm:px-8 sm:py-12 lg:px-10">
-              <div className="absolute right-0 top-0 h-28 w-28 rounded-bl-[100px] bg-white/10" />
+            <div className="relative bg-secondary px-6 py-10 text-white sm:px-8 sm:py-12 lg:px-10">
+              <div className="absolute right-0 top-0 h-28 w-28 rounded-bl-[100px] " />
 
               <div className="relative">
                 <span className="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
@@ -69,17 +69,17 @@ const QuickContact = () => {
               </div>
             </div>
 
-            <div className="bg-[#fffdfb] px-6 py-10 sm:px-8 sm:py-12 lg:px-10">
+            <div className=" px-6 py-10 sm:px-8 sm:py-12 lg:px-10">
               <div className="grid gap-5">
                 {contactItems.map(
                   ({ icon: Icon, title, description, value, action, href, featured }) => (
                     <a
                       key={title}
                       href={href}
-                      className={`group rounded-[28px] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-7 ${
+                      className={`group rounded-4xl border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-lg sm:p-7 ${
                         featured
-                          ? "border-primary/20 bg-primary/5"
-                          : "border-primary/10 bg-white"
+                          ? "border-primary/20 "
+                          : "border-primary/10"
                       }`}
                     >
                       <div className="flex items-start gap-4">
