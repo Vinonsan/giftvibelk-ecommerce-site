@@ -10,7 +10,6 @@ import {
   Folder,
   Grid2X2,
   HeartHandshake,
-  Home,
   LayoutDashboard,
   PackageSearch,
   Settings,

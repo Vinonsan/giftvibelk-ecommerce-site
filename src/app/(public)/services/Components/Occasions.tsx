@@ -8,42 +8,42 @@ const occasions = [
     description:
       "Make birthdays more special with cakes, flowers, gift boxes, and surprise delivery.",
     tag: "Most Popular",
-    image: "/images/occasions/birthday.jpg",
+    image: "/images/birthday.png",
   },
   {
     title: "Anniversaries",
     description:
       "Celebrate love with romantic gifts, elegant presentation, and meaningful surprises.",
     tag: "Romantic",
-    image: "/images/occasions/anniversary.jpg",
+    image: "/images/imageone.png",
   },
   {
     title: "Baby Showers",
     description:
       "Welcome new beginnings with thoughtful and beautifully arranged gift sets.",
     tag: "Cute Picks",
-    image: "/images/occasions/baby-shower.jpg",
+    image: "/images/imagetwo.png",
   },
   {
     title: "Graduations",
     description:
       "Honor achievements with memorable gifts for an important milestone.",
     tag: "Celebration",
-    image: "/images/occasions/graduation.jpg",
+    image: "/images/imagethree.png",
   },
   {
     title: "Special Surprises",
     description:
       "Send unexpected joy to your loved ones on any day that deserves a smile.",
     tag: "Anytime",
-    image: "/images/occasions/surprise.jpg",
+    image: "/images/imagefour.png",
   },
   {
     title: "Corporate Gifting",
     description:
       "Professional gifting solutions for clients, teams, and business occasions.",
     tag: "Professional",
-    image: "/images/occasions/corporate.jpg",
+    image: "/images/4.png",
   },
 ];
 

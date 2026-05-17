@@ -18,10 +18,10 @@ const categoryLinks = [
 ];
 
 const socialLinks = [
-  { href: "https://facebook.com", label: "Facebook", icon: "facebook" as const },
-  { href: "https://youtube.com", label: "YouTube", icon: "youtube" as const },
-  { href: "https://instagram.com", label: "Instagram", icon: "instagram" as const },
-  { href: "https://tiktok.com", label: "TikTok", icon: "tiktok" as const },
+  { href: "https://www.facebook.com/share/18RHQ4b6zt/", label: "Facebook", icon: "facebook" as const },
+  { href: "https://youtube.com/@giftvibelk9920?si=KxvCS9mU-RVufHJZ", label: "YouTube", icon: "youtube" as const },
+  { href: "https://www.instagram.com/giftvibelk?igsh=ZmJocjk2bWQ5ZXp5", label: "Instagram", icon: "instagram" as const },
+  { href: "https://www.tiktok.com/@giftvibelk?_r=1&_t=ZS-96RNJ0YfQ6X", label: "TikTok", icon: "tiktok" as const },
 ];
 
 const Footer = () => {

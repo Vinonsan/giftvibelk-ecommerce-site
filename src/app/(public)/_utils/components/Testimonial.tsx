@@ -120,7 +120,9 @@ export default function Testimonial() {
                   </div>
 
                   <p className="mt-6 flex-1 text-base leading-7 text-muted-foreground">
-                    "{item.quote}"
+                    <span>&quot;</span>
+                    {item.quote}
+                    <span>&quot;</span>
                   </p>
 
                   <div className="mt-7 border-t border-primary/10 pt-5">

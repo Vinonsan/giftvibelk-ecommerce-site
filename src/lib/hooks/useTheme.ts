@@ -30,14 +30,18 @@ function getInitialTheme(): AppTheme {
 
 export function useTheme(): UseThemeResult {
   const [theme, setThemeState] = useState<AppTheme>(getInitialTheme)
-  const [resolvedTheme, setResolvedTheme] = useState<ResolvedAppTheme>(() =>
-    theme === 'system' ? getSystemTheme() : theme
-  )
+  const [systemTheme, setSystemTheme] = useState<ResolvedAppTheme>(getSystemTheme)
+  const resolvedTheme: ResolvedAppTheme = theme === 'system' ? systemTheme : theme
+  const setTheme = (nextTheme: AppTheme) => {
+    if (nextTheme === 'system') {
+      setSystemTheme(getSystemTheme())
+    }
+
+    setThemeState(nextTheme)
+  }
 
   useEffect(() => {
-    const nextResolvedTheme = applyTheme(theme)
-    setResolvedTheme(nextResolvedTheme)
-
+    applyTheme(theme)
     window.localStorage.setItem(THEME_STORAGE_KEY, theme)
 
     if (theme !== 'system') {
@@ -46,7 +50,9 @@ export function useTheme(): UseThemeResult {
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
     const handleChange = () => {
-      setResolvedTheme(applyTheme('system'))
+      const nextSystemTheme = getSystemTheme()
+      setSystemTheme(nextSystemTheme)
+      applyTheme('system')
     }
 
     mediaQuery.addEventListener('change', handleChange)
@@ -60,7 +66,7 @@ export function useTheme(): UseThemeResult {
     isDark: resolvedTheme === 'dark',
     theme,
     resolvedTheme,
-    setTheme: setThemeState,
+    setTheme,
     toggleTheme: () => {
       setThemeState((currentTheme) => {
         const activeTheme = currentTheme === 'system' ? getSystemTheme() : currentTheme

@@ -15,7 +15,7 @@ const Categories = () => {
         />
 
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {giftCategories.map((category) => (
+          {giftCategories.map((category, index) => (
             <Link
               key={category.slug}
               href={`/categories/${category.slug}`}
@@ -26,6 +26,9 @@ const Categories = () => {
                   src={category.image}
                   alt={`${category.title} gift delivery Sri Lanka`}
                   fill
+                  priority={index === 0}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw"
                   className="object-cover transition duration-300 group-hover:scale-110"
                 />
               </div>

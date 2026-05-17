@@ -8,37 +8,37 @@ export const giftCategories: GiftCategory[] = [
   },
   {
     title: "Love & Romance",
-    image: "/images/categories/love.jpg",
+    image: "/images/imageone.png",
     slug: "love-romance",
   },
   {
     title: "Anniversary",
-    image: "/images/categories/anniversary.jpg",
+    image: "/images/imagetwo.png",
     slug: "anniversary",
   },
   {
     title: "Flowers & Bouquets",
-    image: "/images/categories/flowers.jpg",
+    image: "/images/imagethree.png",
     slug: "flowers-bouquets",
   },
   {
     title: "Cakes & Chocolates",
-    image: "/images/categories/cakes.jpg",
+    image: "/images/imagefour.png",
     slug: "cakes-chocolates",
   },
   {
     title: "Surprise Boxes",
-    image: "/images/categories/surprise.jpg",
+    image: "/images/1.png",
     slug: "surprise-boxes",
   },
   {
     title: "Baby Gifts",
-    image: "/images/categories/baby.jpg",
+    image: "/images/2.png",
     slug: "baby-gifts",
   },
   {
     title: "Custom Gifts",
-    image: "/images/categories/custom.jpg",
+    image: "/images/3.png",
     slug: "custom-gifts",
   },
 ];

@@ -21,7 +21,7 @@ const PageChildren = () => {
         primaryText="About Us"
         primaryHref="/about"
         secondaryText="Explore More"
-        secondaryHref="/services"
+        secondaryHref="/products"
       />
       </div>
     </Fragment>
