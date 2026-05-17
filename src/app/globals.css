@@ -141,3 +141,47 @@ body {
     animation: none;
   }
 }
+
+ .common-hero-icon {
+          position: absolute;
+          left: var(--icon-left);
+          top: var(--icon-top);
+          width: var(--icon-size);
+          height: var(--icon-size);
+          opacity: var(--icon-opacity);
+          transform: translate3d(0, 0, 0) rotate(var(--icon-rotate));
+          animation: common-hero-float var(--icon-duration) ease-in-out infinite;
+          animation-delay: var(--icon-delay);
+          will-change: transform, opacity;
+        }
+
+        @keyframes common-hero-float {
+          0%,
+          100% {
+            transform: translate3d(0, 0, 0) rotate(var(--icon-rotate)) scale(1);
+          }
+
+          35% {
+            transform:
+              translate3d(
+                calc(var(--icon-drift-x) * 0.55),
+                calc(var(--icon-drift-y) * -0.4),
+                0
+              )
+              rotate(calc(var(--icon-rotate) * -0.6))
+              scale(1.08);
+          }
+
+          70% {
+            transform:
+              translate3d(var(--icon-drift-x), var(--icon-drift-y), 0)
+              rotate(calc(var(--icon-rotate) * 0.8))
+              scale(0.94);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .common-hero-icon {
+            animation: none;
+          }
+        }

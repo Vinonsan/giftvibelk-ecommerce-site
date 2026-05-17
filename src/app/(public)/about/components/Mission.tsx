@@ -33,7 +33,7 @@ const Mission = () => {
               key={title}
               className={`group rounded-3xl border border-primary/10  p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:shadow-xl sm:p-8`}
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-primary shadow-sm ring-1 ring-primary/10 transition group-hover:scale-105">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl text-primary shadow-sm ring-1 ring-primary/10 transition group-hover:scale-105">
                 <Icon size={28} />
               </div>
 

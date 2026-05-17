@@ -2,6 +2,7 @@ import CommonPageHero from "@/components/layouts/CommonPageHero";
 import HowItWorks from "./components/HowItWorks";
 import HowToOrder from "./components/HowToOrder";
 import Mission from "./components/Mission";
+import Calltoaction from "@/components/layouts/Calltoaction";
 
 const PageChildren = () => {
   return (
@@ -16,6 +17,15 @@ const PageChildren = () => {
         <Mission />
         <HowItWorks />
         <HowToOrder />
+        <Calltoaction
+  badge="Premium Gift Collections"
+  title="Explore Our Special Gift Services"
+  description="Discover beautifully curated gift collections, surprise packages, flower arrangements, cakes, and personalized gifts crafted for every memorable moment."
+  primaryText="View Services"
+  primaryHref="/services"
+  secondaryText="Contact Us"
+  secondaryHref="/contact"
+/>
       </div>
     </div>
   );

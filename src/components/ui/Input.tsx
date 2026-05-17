@@ -64,7 +64,7 @@ export default function Input({
 
       <div
         className={cn(
-          "flex w-full items-center gap-3 rounded-2xl border bg-white shadow-sm transition focus-within:ring-4",
+          "flex w-full items-center gap-3 rounded-2xl border bg-transparent  shadow-sm transition focus-within:ring-4",
           stateClasses[effectiveState],
           disabled && "cursor-not-allowed bg-slate-50 opacity-70",
           className,

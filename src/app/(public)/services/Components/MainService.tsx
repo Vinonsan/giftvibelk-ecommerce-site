@@ -64,7 +64,7 @@ export default function MainServices() {
               className={`group relative overflow-hidden rounded-[28px] border p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl sm:p-7 ${
                 featured
                   ? "border-primary/20 bg-primary text-white"
-                  : "border-primary/10 bg-white"
+                  : "border-primary/10 "
               }`}
             >
               <div
@@ -77,7 +77,7 @@ export default function MainServices() {
                 className={`relative flex h-14 w-14 items-center justify-center rounded-2xl ${
                   featured
                     ? "bg-white/15 text-white"
-                    : "bg-primary/10 text-primary"
+                    : "border border-primary/10 text-primary"
                 }`}
               >
                 <Icon size={26} />
@@ -101,18 +101,7 @@ export default function MainServices() {
                 </p>
               </div>
 
-              <div className="relative mt-6">
-                <button
-                  className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${
-                    featured
-                      ? "bg-white text-primary hover:bg-white/90"
-                      : "bg-primary text-white hover:bg-primary/90"
-                  }`}
-                >
-                  <Video size={16} />
-                  View Video
-                </button>
-              </div>
+        
             </article>
           ))}
         </div>

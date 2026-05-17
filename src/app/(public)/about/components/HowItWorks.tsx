@@ -69,7 +69,7 @@ export default function HowItWorks() {
             className="rounded-3xl border border-primary/10  p-6 transition duration-300 hover:-translate-y-1 hover:shadow-md sm:p-7"
           >
             <div className="flex items-start justify-between gap-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+              <div className="flex h-14 w-14 border border-primary/10 items-center justify-center rounded-2xl text-primary">
                 <Icon size={26} />
               </div>
 

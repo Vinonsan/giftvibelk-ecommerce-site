@@ -7,9 +7,9 @@ const contactItems = [
     title: "Chat on WhatsApp",
     description:
       "Get quick responses for gift orders, customization, and delivery details.",
-    value: "+94 77 123 4567",
+    value: "075 4476969",
     action: "Start Chat",
-    href: "https://wa.me/94771234567",
+    href: "https://wa.me/94754476969",
     featured: true,
   },
   {
@@ -17,26 +17,26 @@ const contactItems = [
     title: "Call Us Directly",
     description:
       "Speak with us for urgent orders, surprise delivery, and instant support.",
-    value: "+94 77 123 4567",
+    value: "075 4476969",
     action: "Call Now",
-    href: "tel:+94771234567",
+    href: "tel:0754476969",
   },
   {
     icon: Mail,
     title: "Send an Email",
     description:
       "Reach out for general inquiries, partnerships, or custom order discussions.",
-    value: "hello@giftvibelk.lk",
+    value: "support@giftvibelk.com",
     action: "Send Email",
-    href: "mailto:hello@giftvibelk.lk",
+    href: "mailto:support@giftvibelk.com",
   },
 ];
 
 const QuickContact = () => {
   return (
-    <section className="py-16 sm:py-20">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-[32px] border border-primary/10 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.05)]">
+    <section >
+      <div className="mx-auto ">
+        <div className="overflow-hidden rounded-4xl border border-primary/10 bg-white shadow-[0_20px_60px_rgba(0,0,0,0.05)]">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
             <div className="relative bg-primary px-6 py-10 text-white sm:px-8 sm:py-12 lg:px-10">
               <div className="absolute right-0 top-0 h-28 w-28 rounded-bl-[100px] bg-white/10" />

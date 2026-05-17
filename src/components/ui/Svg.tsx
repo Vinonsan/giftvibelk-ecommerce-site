@@ -3,6 +3,8 @@ import type { SVGProps } from "react";
 type SvgName =
   | "cart"
   | "gift"
+  | "teddy"
+  | "watch"
   | "sun"
   | "moon"
   | "facebook"
@@ -33,6 +35,48 @@ export default function Svg({ name, ...props }: SvgProps) {
         <path d="M12 5v15.5" />
         <path d="M9.2 3.5c1.9 0 2.8 1.5 2.8 1.5S11.1 6.5 9.2 6.5 6.8 5.8 6.8 5s.5-1.5 2.4-1.5Z" />
         <path d="M14.8 3.5C12.9 3.5 12 5 12 5s.9 1.5 2.8 1.5 2.4-.7 2.4-1.5-.5-1.5-2.4-1.5Z" />
+      </svg>
+    );
+  }
+
+  if (name === "watch") {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+        {...props}
+      >
+        <path d="M9 2.8h6l.8 4.1a7 7 0 0 1 0 10.2L15 21.2H9l-.8-4.1a7 7 0 0 1 0-10.2L9 2.8Z" />
+        <circle cx="12" cy="12" r="4.2" />
+        <path d="M12 9.7V12l1.7 1.2" />
+      </svg>
+    );
+  }
+
+  if (name === "teddy") {
+    return (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+        {...props}
+      >
+        <circle cx="6.8" cy="6.8" r="2.7" />
+        <circle cx="17.2" cy="6.8" r="2.7" />
+        <circle cx="12" cy="11.5" r="7" />
+        <circle cx="9.5" cy="10.2" r=".8" fill="currentColor" stroke="none" />
+        <circle cx="14.5" cy="10.2" r=".8" fill="currentColor" stroke="none" />
+        <path d="M10.2 14.2c.8.7 2.8.7 3.6 0" />
+        <path d="M12 12.2v1.2" />
       </svg>
     );
   }

@@ -88,9 +88,9 @@ const DeliveryCoverage = () => {
             {coveragePoints.map(({ icon: Icon, title, description }) => (
               <article
                 key={title}
-                className="rounded-[28px] border border-primary/10 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
+                className="rounded-[28px] border border-primary/10  p-6 transition duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/10 text-primary">
                   <Icon size={24} />
                 </div>
 

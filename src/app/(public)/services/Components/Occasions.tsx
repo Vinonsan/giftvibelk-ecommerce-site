@@ -57,7 +57,7 @@ export default function Occasions() {
 
        <div className="mt-8 flex flex-wrap justify-center gap-3">
         {occasions.map((item) => (
-          <Badge key={item.title} variant="primary">
+          <Badge key={item.title} variant="secondary">
             {item.tag}
           </Badge>
         ))}
@@ -67,7 +67,7 @@ export default function Occasions() {
         {occasions.map(({ title, description, tag, image }) => (
           <article
             key={title}
-            className="group overflow-hidden rounded-[28px] border border-primary/10 bg-white transition duration-300 hover:-translate-y-1 hover:shadow-xl"
+            className="group overflow-hidden rounded-4xl border border-primary/10  transition duration-300 hover:-translate-y-1 hover:shadow-xl"
           >
             <div className="relative h-56 overflow-hidden">
               <Image
