@@ -1,44 +1,20 @@
 import type { Metadata } from "next";
 import PageChildren from "./PageChildren";
+import { createSeoMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services",
+export const metadata: Metadata = createSeoMetadata({
+  title: "Gift Delivery Services Sri Lanka | Flowers, Cakes & Personalized Gifts",
   description:
-    "Explore Giftvibelk services including curated gift boxes, custom gift planning, and thoughtful delivery coordination across Sri Lanka.",
+    "Explore GiftVibeLK services for birthday gifts, flower delivery, surprise boxes, cakes, custom hampers, and personalized gift delivery across Sri Lanka.",
+  path: "/services",
   keywords: [
-    "gift services sri lanka",
-    "curated gift boxes sri lanka",
-    "custom gift planning sri lanka",
-    "gift delivery services sri lanka",
+    "gift delivery services Sri Lanka",
+    "flower delivery Sri Lanka",
+    "cake delivery Sri Lanka",
+    "surprise gift service Sri Lanka",
+    "personalized gift delivery",
   ],
-  alternates: {
-    canonical: "/services",
-  },
-  openGraph: {
-    title: "Giftvibelk Services | Gifting Solutions in Sri Lanka",
-    description:
-      "See how Giftvibelk helps with curated gifts, custom orders, and smooth delivery experiences across Sri Lanka.",
-    url: "/services",
-    siteName: "Giftvibelk",
-    locale: "en_LK",
-    type: "website",
-    images: [
-      {
-        url: "/logo/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Giftvibelk services",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Giftvibelk Services | Gifting Solutions in Sri Lanka",
-    description:
-      "Browse Giftvibelk services for curated gifting, custom orders, and premium delivery support.",
-    images: ["/logo/logo.png"],
-  },
-};
+});
 
 export default function ServicesPage() {
   return <PageChildren />;

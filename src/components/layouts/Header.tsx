@@ -8,6 +8,7 @@ import Svg from "@/components/ui/Svg";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/collections", label: "Collections" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/contact", label: "Contact" },
@@ -34,7 +35,7 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/logo/4.png"
-            alt="Giftvibelk logo"
+            alt="GiftVibeLK online gift shop logo"
             width={180}
             height={60}
             priority

@@ -72,7 +72,7 @@ export default function Occasions() {
             <div className="relative h-56 overflow-hidden">
               <Image
                 src={image}
-                alt={title}
+                alt={`${title} gift delivery service in Sri Lanka`}
                 fill
                 className="object-cover transition duration-500 group-hover:scale-105"
               />

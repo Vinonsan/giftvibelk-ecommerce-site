@@ -25,14 +25,17 @@ export default function ProductCard({
   const inStock = stock > 0;
   const [liked, setLiked] = useState(false);
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-primary/10 bg-card shadow-sm ">
+    <div
+      id={slug}
+      className="group relative overflow-hidden rounded-2xl border border-primary/10 bg-card shadow-sm"
+    >
       <Link
-        href={`/products/${slug}`}
+        href={`/collections#${slug}`}
         className="block relative h-72 overflow-hidden"
       >
         <Image
           src={image}
-          alt={name}
+          alt={`${name} - ${category} gift delivery in Sri Lanka`}
           fill
           className="object-cover transition duration-500 group-hover:scale-105"
         />

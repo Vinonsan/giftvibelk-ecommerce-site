@@ -3,42 +3,42 @@ import type { GiftCategory } from "../types/home";
 export const giftCategories: GiftCategory[] = [
   {
     title: "Birthday Gifts",
-    image: "/images/birthday.png",
+    image: "/categoroies/3.png",
     slug: "birthday-gifts",
   },
   {
     title: "Love & Romance",
-    image: "/images/imageone.png",
+    image: "/categoroies/2.png",
     slug: "love-romance",
   },
   {
     title: "Anniversary",
-    image: "/images/imagetwo.png",
+    image: "/categoroies/4.png",
     slug: "anniversary",
   },
   {
     title: "Flowers & Bouquets",
-    image: "/images/imagethree.png",
+    image: "/categoroies/1.png",
     slug: "flowers-bouquets",
   },
   {
     title: "Cakes & Chocolates",
-    image: "/images/imagefour.png",
+    image: "/categoroies/5.png",
     slug: "cakes-chocolates",
   },
   {
     title: "Surprise Boxes",
-    image: "/images/1.png",
+    image: "/categoroies/6.png",
     slug: "surprise-boxes",
   },
   {
-    title: "Baby Gifts",
-    image: "/images/2.png",
-    slug: "baby-gifts",
+    title: "Marriage Gifts",
+    image: "/categoroies/7.png",
+    slug: "marriage-gifts",
   },
   {
-    title: "Custom Gifts",
-    image: "/images/3.png",
-    slug: "custom-gifts",
+    title: "Boyfriend Gifts",
+    image: "/categoroies/8.png",
+    slug: "boyfriend-gifts",
   },
 ];

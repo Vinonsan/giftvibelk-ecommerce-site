@@ -1,45 +1,19 @@
 import type { Metadata } from "next";
 import PageChildren from "./PageChildren";
+import { createSeoMetadata } from "@/lib/seo";
 
-const pageOgImage = "/logo/logo.png";
-
-export const metadata: Metadata = {
-  title: "About",
+export const metadata: Metadata = createSeoMetadata({
+  title: "About GiftVibeLK | Thoughtful Gift Delivery in Sri Lanka",
   description:
-    "Learn about Giftvibelk, our curated gifting approach, and how we help customers in Sri Lanka celebrate every meaningful moment.",
+    "Learn about GiftVibeLK, a Sri Lankan gift ecommerce brand creating curated gift boxes, flower delivery, cakes, surprise boxes, and personalized gifts.",
+  path: "/about",
   keywords: [
-    "about giftvibelk",
-    "gift shop sri lanka about",
-    "online gifting service sri lanka",
+    "about GiftVibeLK",
+    "Sri Lanka gifting brand",
+    "custom gift service Sri Lanka",
+    "gift delivery company Sri Lanka",
   ],
-  alternates: {
-    canonical: "/about",
-  },
-  openGraph: {
-    title: "About Giftvibelk",
-    description:
-      "Discover the story behind Giftvibelk and our mission to deliver memorable gifts across Sri Lanka.",
-    url: "/about",
-    siteName: "Giftvibelk",
-    locale: "en_LK",
-    type: "website",
-    images: [
-      {
-        url: pageOgImage,
-        width: 1200,
-        height: 630,
-        alt: "About Giftvibelk",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About Giftvibelk",
-    description:
-      "See how Giftvibelk creates stylish gifting experiences for celebrations across Sri Lanka.",
-    images: [pageOgImage],
-  },
-};
+});
 
 const AboutPage = () => {
   return <PageChildren />;

@@ -1,9 +1,11 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/
 
 # Host
-Host: https://www.giftvibelk.com
+Host: https://giftvibelk.lk
 
 # Sitemaps
-Sitemap: https://www.giftvibelk.com/sitemap.xml
+Sitemap: https://giftvibelk.lk/sitemap.xml

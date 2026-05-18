@@ -78,7 +78,7 @@ const FeaturedProducts = () => {
 
         {featuredProducts.length > 6 ? (
           <div className="flex justify-center">
-            <Button href="/products" variant="primary">
+            <Button href="/collections" variant="primary">
               Show all
             </Button>
           </div>

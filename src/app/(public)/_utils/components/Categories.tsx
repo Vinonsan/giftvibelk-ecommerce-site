@@ -18,7 +18,8 @@ const Categories = () => {
           {giftCategories.map((category, index) => (
             <Link
               key={category.slug}
-              href={`/categories/${category.slug}`}
+              id={category.slug}
+              href={`/collections#${category.slug}`}
               className="group overflow-hidden rounded-2xl border border-primary/10   shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="relative h-80 w-full overflow-hidden">

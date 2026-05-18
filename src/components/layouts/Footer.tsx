@@ -5,16 +5,17 @@ import Svg from "@/components/ui/Svg";
 
 const quickLinks = [
   { href: "/", label: "Home" },
+  { href: "/collections", label: "Collections" },
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/contact", label: "Contact" },
 ];
 
 const categoryLinks = [
-  { href: "/categories/birthday-gifts", label: "Birthday Gifts" },
-  { href: "/categories/love-romance", label: "Love & Romance" },
-  { href: "/categories/anniversary", label: "Anniversary" },
-  { href: "/categories/custom-gifts", label: "Custom Gifts" },
+  { href: "/collections#birthday-gifts", label: "Birthday Gifts" },
+  { href: "/collections#love-romance", label: "Love & Romance" },
+  { href: "/collections#anniversary", label: "Anniversary" },
+  { href: "/collections#custom-gifts", label: "Custom Gifts" },
 ];
 
 const socialLinks = [
@@ -36,7 +37,7 @@ const Footer = () => {
               <Link href="/" className="flex items-center gap-2">
                 <Image
                   src="/logo/5.png"
-                  alt="Giftvibelk logo"
+                  alt="GiftVibeLK online gift shop logo"
                   width={50}
                   height={50}
                   className="object-contain rounded-xl bg-primary/5 "

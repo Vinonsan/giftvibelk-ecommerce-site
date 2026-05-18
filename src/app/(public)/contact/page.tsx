@@ -1,45 +1,19 @@
 import type { Metadata } from "next";
 import PageChildren from "./PageChildren";
+import { createSeoMetadata } from "@/lib/seo";
 
-const pageOgImage = "/logo/logo.png";
-
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = createSeoMetadata({
+  title: "Contact GiftVibeLK | Custom Gift Orders & Delivery Support Sri Lanka",
   description:
-    "Contact Giftvibelk for gifting support, product inquiries, delivery details, and custom order requests in Sri Lanka.",
+    "Contact GiftVibeLK for birthday gifts, flower delivery, cakes, surprise boxes, personalized gifts, custom gift requests, and delivery support in Sri Lanka.",
+  path: "/contact",
   keywords: [
-    "contact giftvibelk",
-    "gift delivery sri lanka contact",
-    "custom gifts sri lanka contact",
+    "contact GiftVibeLK",
+    "custom gift order Sri Lanka",
+    "gift delivery support Sri Lanka",
+    "personalized gifts contact Sri Lanka",
   ],
-  alternates: {
-    canonical: "/contact",
-  },
-  openGraph: {
-    title: "Contact Giftvibelk",
-    description:
-      "Reach Giftvibelk for order help, custom gifting requests, and delivery support across Sri Lanka.",
-    url: "/contact",
-    siteName: "Giftvibelk",
-    locale: "en_LK",
-    type: "website",
-    images: [
-      {
-        url: pageOgImage,
-        width: 1200,
-        height: 630,
-        alt: "Contact Giftvibelk",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Contact Giftvibelk",
-    description:
-      "Speak with Giftvibelk about orders, delivery, and personalized gifting support.",
-    images: [pageOgImage],
-  },
-};
+});
 
 const ContactPage = () => {
   return <PageChildren />;
