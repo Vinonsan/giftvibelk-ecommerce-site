@@ -1,6 +1,6 @@
 import { Plus, Tags } from 'lucide-react'
 
-import ProductSectionShell from '../../_utils/components/ProductSectionShell'
+import ProductSectionShell from '../../../_utils/components/ProductSectionShell'
 
 const categories = [
   { name: 'Birthday', products: 8, accent: 'Best-selling celebration boxes' },

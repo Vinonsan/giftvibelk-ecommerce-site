@@ -1,6 +1,6 @@
 import { Eye, Sparkles, Star } from 'lucide-react'
 
-import ProductSectionShell from '../../_utils/components/ProductSectionShell'
+import ProductSectionShell from '../../../_utils/components/ProductSectionShell'
 
 const featuredProducts = [
   'Premium Custom Celebration Box',

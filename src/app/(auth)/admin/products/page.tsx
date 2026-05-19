@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Eye, PencilLine, Plus, Star } from 'lucide-react'
 
-import ProductSectionShell from '../_utils/components/ProductSectionShell'
+import ProductSectionShell from '../../_utils/components/ProductSectionShell'
 
 const productStats = [
   { label: 'Total Products', value: '24', note: 'Across all gift categories' },

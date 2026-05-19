@@ -1,5 +1,5 @@
-import { redirect } from 'next/navigation'
+import PageChildren from './_utils/PageChildren'
 
 export default function AdminIndexPage() {
-  redirect('/admin/products')
+  return <PageChildren />
 }
