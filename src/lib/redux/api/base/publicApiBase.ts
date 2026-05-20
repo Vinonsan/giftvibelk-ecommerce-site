@@ -13,8 +13,6 @@ export const publicApiBase = async(
   const baseQuery = fetchBaseQuery({
     baseUrl: getApiBaseUrl(),
     prepareHeaders: (headers) => {
-      headers.set('content-type', 'application/json')
-
       if (isBrowser()) {
         headers.set('x-origin', window.location.host)
       }

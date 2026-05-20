@@ -9,3 +9,16 @@ export interface IGetAllCatagoryRequest extends CommonRequestParams {
 export interface IGetCatagoryByIdRequest {
   id: string
 }
+
+export interface ICreateCatagoryRequest {
+  name: string
+  image?: File | null
+}
+
+export interface IUpdateCatagoryRequest extends ICreateCatagoryRequest {
+  id: string
+}
+
+export interface IDeleteCatagoryRequest {
+  id: string
+}

@@ -1,7 +1,19 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 
-import { getCatagoryByIdEndpoint, getCatagoryListEndpoint } from './endpoint'
-import { IGetAllCatagoryRequest, IGetCatagoryByIdRequest } from './types/request'
+import {
+  createCatagoryEndpoint,
+  deleteCatagoryEndpoint,
+  getCatagoryByIdEndpoint,
+  getCatagoryListEndpoint,
+  updateCatagoryEndpoint,
+} from './endpoint'
+import {
+  ICreateCatagoryRequest,
+  IDeleteCatagoryRequest,
+  IGetAllCatagoryRequest,
+  IGetCatagoryByIdRequest,
+  IUpdateCatagoryRequest,
+} from './types/request'
 import { ICatagoryGetAllTransformResult, ICatagoryTransform } from './types/transform'
 import { publicApiBase } from '../base'
 
@@ -16,7 +28,16 @@ export const catagoryApi = createApi({
     getCatagoryById: builder.query<ICatagoryTransform, IGetCatagoryByIdRequest>(
       getCatagoryByIdEndpoint,
     ),
+    createCatagory: builder.mutation<ICatagoryTransform, ICreateCatagoryRequest>(createCatagoryEndpoint),
+    updateCatagory: builder.mutation<ICatagoryTransform, IUpdateCatagoryRequest>(updateCatagoryEndpoint),
+    deleteCatagory: builder.mutation<unknown, IDeleteCatagoryRequest>(deleteCatagoryEndpoint),
   }),
 })
 
-export const { useGetAllCatagoryQuery, useGetCatagoryByIdQuery } = catagoryApi
+export const {
+  useGetAllCatagoryQuery,
+  useGetCatagoryByIdQuery,
+  useCreateCatagoryMutation,
+  useUpdateCatagoryMutation,
+  useDeleteCatagoryMutation,
+} = catagoryApi

@@ -5,10 +5,17 @@ import { PencilLine, Plus, Trash2 } from 'lucide-react'
 import { useState } from 'react'
 
 import DataTable, { type ColumnDef } from '@/components/ui/DataTable'
-import { useGetAllCatagoryQuery } from '@/lib/redux/api/catagory/api'
+import {
+  useCreateCatagoryMutation,
+  useDeleteCatagoryMutation,
+  useGetAllCatagoryQuery,
+  useUpdateCatagoryMutation,
+} from '@/lib/redux/api/catagory/api'
 import type { ICatagoryTransform } from '@/lib/redux/api/catagory/types/transform'
 import type { ApiErrorShape } from '@/lib/types/api'
 import Button from '@/components/ui/Button'
+import AddProductModal from './AddProductModal'
+import DeleteProductModal from './DeleteProductModal'
 
 const PAGE_LIMIT = 10
 
@@ -27,10 +34,43 @@ function getErrorMessage(error: unknown) {
 export default function PageChildren() {
   const [page, setPage] = useState(1)
   const [pageSize, setPageSize] = useState(PAGE_LIMIT)
+  const [editingCategory, setEditingCategory] = useState<ICatagoryTransform | null>(null)
+  const [deletingCategory, setDeletingCategory] = useState<ICatagoryTransform | null>(null)
+  const [isFormOpen, setIsFormOpen] = useState(false)
   const { data, error, isFetching, isLoading } = useGetAllCatagoryQuery({ page, limit: pageSize })
+  const [createCatagory, createState] = useCreateCatagoryMutation()
+  const [updateCatagory, updateState] = useUpdateCatagoryMutation()
+  const [deleteCatagory, deleteState] = useDeleteCatagoryMutation()
   const categories = data?.items ?? []
   const pagination = data?.pagination
   const loading = isLoading || isFetching
+  const isSubmitting = createState.isLoading || updateState.isLoading
+
+  const openAddModal = () => {
+    setEditingCategory(null)
+    setIsFormOpen(true)
+  }
+
+  const openEditModal = (category: ICatagoryTransform) => {
+    setEditingCategory(category)
+    setIsFormOpen(true)
+  }
+
+  const handleFormSubmit = async ({ id, name, image }: { id?: string; name: string; image: File | null }) => {
+    if (id) {
+      await updateCatagory({ id, name, image }).unwrap()
+    } else {
+      await createCatagory({ name, image }).unwrap()
+    }
+
+    setIsFormOpen(false)
+    setEditingCategory(null)
+  }
+
+  const handleDeleteConfirm = async (category: ICatagoryTransform) => {
+    await deleteCatagory({ id: category.id }).unwrap()
+    setDeletingCategory(null)
+  }
 
   const columns: ColumnDef<ICatagoryTransform>[] = [
     {
@@ -77,15 +117,14 @@ export default function PageChildren() {
           <Button
             variant='gray'
             size='sm'
-
-            onClick={()=>{}}
+            onClick={() => openEditModal(row.original)}
           >
             <PencilLine className="size-4" />
           </Button>
           <Button
             variant='gray'
             size='sm'
-            onClick={()=>{}}
+            onClick={() => setDeletingCategory(row.original)}
           >
             <Trash2 className="size-4" />
           </Button>
@@ -109,7 +148,7 @@ export default function PageChildren() {
         <Button
           variant="primary"
           size='sm'
-          onClick={() => { }}
+          onClick={openAddModal}
         >
           <Plus className="size-4" />
           Add Category
@@ -128,6 +167,26 @@ export default function PageChildren() {
         errorMessage={getErrorMessage(error)}
         emptyMessage="No categories found"
         emptyDescription="Create your first product category to start organizing gifts."
+      />
+
+      <AddProductModal
+        key={editingCategory?.id ?? 'new-category'}
+        category={editingCategory}
+        isOpen={isFormOpen}
+        isSubmitting={isSubmitting}
+        onClose={() => {
+          setIsFormOpen(false)
+          setEditingCategory(null)
+        }}
+        onSubmit={handleFormSubmit}
+      />
+
+      <DeleteProductModal
+        category={deletingCategory}
+        isDeleting={deleteState.isLoading}
+        isOpen={Boolean(deletingCategory)}
+        onClose={() => setDeletingCategory(null)}
+        onConfirm={handleDeleteConfirm}
       />
     </div>
   )

@@ -176,8 +176,12 @@ const DataTable = <TData,>({
     <>
       {Array.from({ length: Math.min(Math.max(pageSize, 3), 10) }).map((_, rowIndex) => (
         <tr key={`loading-${rowIndex}`} className="border-b border-admin-border/70">
-          {columns.map((_, columnIndex) => (
-            <td key={`loading-${rowIndex}-${columnIndex}`} className="px-5 py-4">
+          {columns.map((column, columnIndex) => (
+            <td
+              key={`loading-${rowIndex}-${columnIndex}`}
+              className="border-r border-admin-border/70 px-5 py-4 last:border-r-0"
+              style={{ width: getColumnWidth(columns, column.id ?? String(columnIndex)) }}
+            >
               <div className="h-4 w-3/4 animate-pulse rounded-full bg-primary/10" />
             </td>
           ))}
@@ -190,7 +194,7 @@ const DataTable = <TData,>({
     <div className="w-full">
       <div className="overflow-hidden rounded-xl border border-admin-border">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-full border-collapse">
+          <table className="w-full min-w-full table-fixed border-collapse">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
@@ -201,7 +205,7 @@ const DataTable = <TData,>({
                   return (
                       <th
                         key={header.id}
-                        className="border-b border-admin-border px-5 py-4 text-left text-base font-bold uppercase tracking-[0.14em] text-dark/80 bg-black/2"
+                        className="border-b border-r border-admin-border px-5 py-4 text-left text-base font-bold uppercase tracking-[0.14em] text-admin-text last:border-r-0"
                         style={{ width }}
                       >
                       <button
@@ -257,7 +261,7 @@ const DataTable = <TData,>({
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      className="px-5 py-4 text-sm font-medium text-admin-text"
+                      className="border-r border-admin-border/70 px-5 py-4 text-sm font-medium text-admin-text last:border-r-0"
                       style={{ width: getColumnWidth(columns, cell.column.id) }}
                     >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
