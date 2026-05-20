@@ -1,11 +1,20 @@
-export interface PaginationMeta {
-  page: number
-  limit: number
-  total: number
-  totalPages: number
+export interface PaginationResponse {
+  totalCount: number
+  pageNumber?: number
+  pageSize?: number
 }
 
-export interface PaginatedResult<T> {
+export interface PaginatedApiResponse<T> extends PaginationResponse {
   items: T[]
-  pagination: PaginationMeta
+}
+
+export interface PaginationTransform {
+  totalCount: number
+  currentPageCount: number
+  pageNumber: number
+  pageSize: number
+}
+
+export interface PaginatedTransformResult<T> extends PaginationTransform {
+  data: T[]
 }

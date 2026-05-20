@@ -1,19 +1,28 @@
-import { AUTH_TOKEN_COOKIE_NAME } from '@/lib/auth'
-import { getCookie } from '@/lib/utils/storage'
+import type { BaseQueryApi } from '@reduxjs/toolkit/query/react'
 
-export function createApiHeaders(headers?: HeadersInit, isFormData = false): Headers {
-  const nextHeaders = new Headers(headers)
-  const authToken = getCookie(AUTH_TOKEN_COOKIE_NAME)
+import type { RootState } from '@/lib/redux/store'
+import { isBrowser } from '@/lib/utils'
 
-  if (!isFormData && !nextHeaders.has('content-type')) {
-    nextHeaders.set('content-type', 'application/json')
+interface EndpointWithSkipToken {
+  skipToken?: boolean
+}
+
+export const prepareHeaders = (
+  headers: Headers,
+  { getState, endpoint }: Pick<BaseQueryApi, 'getState' | 'endpoint'>
+): Headers => {
+  const state = (getState() as RootState).auth
+  const skipToken = (endpoint as EndpointWithSkipToken)?.skipToken === true
+
+  const token = state.authToken || state.clientToken
+
+  if (token && !skipToken) {
+    headers.set('authorization', `Bearer ${token}`)
   }
 
-  if (authToken && !nextHeaders.has('authorization')) {
-    nextHeaders.set('authorization', `Bearer ${authToken}`)
-  }
+  headers.set('content-type', 'application/json')
 
-  nextHeaders.set('x-origin', 'giftvibelk-web')
+  if (isBrowser()) headers.set('x-origin', window.location.host)
 
-  return nextHeaders
+  return headers
 }

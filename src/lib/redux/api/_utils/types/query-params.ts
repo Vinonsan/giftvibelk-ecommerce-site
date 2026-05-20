@@ -1,9 +1,12 @@
-export type QueryParamValue =
-  | string
-  | number
-  | boolean
-  | null
-  | undefined
-  | Array<string | number | boolean>
+export interface CommonPagingParams {
+  pageNumber?: number
+  pageSize?: number
+}
 
-export type QueryParams = Record<string, QueryParamValue>
+export interface CommonSearchParams {
+  searchText?: string
+}
+
+export interface CommonRequestParams extends CommonSearchParams {
+  pagination?: CommonPagingParams
+}

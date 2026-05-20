@@ -1,45 +1,34 @@
-import type { ApiErrorResponse, ApiResponse, ApiSuccessResponse } from '@/lib/types/api'
+import { isApiError } from './apiUtils'
+import { createStandardizedError } from './transform/apiTransform'
+import { ApiResponse } from './types/api'
 
-function createErrorResponse(status: number, detail: string, code = 'API_RESPONSE_ERROR'): ApiErrorResponse {
-  return {
-    result: null,
-    isError: true,
+interface CustomFetchBaseQueryError {
+  status: number
+  data?: {
     error: {
-      title: 'API Error',
-      detail,
-      status,
-      code,
-      extensions: {},
-    },
+      title: string
+      detail: string
+      status: number
+      code: string
+    }
   }
 }
 
-export async function parseApiResponse<T>(response: Response): Promise<ApiResponse<T>> {
-  const contentType = response.headers.get('content-type') ?? ''
-  const isJson = contentType.includes('application/json')
-  const payload = isJson ? await response.json() : await response.text()
-
-  if (!response.ok) {
-    if (payload && typeof payload === 'object' && 'isError' in payload) {
-      return payload as ApiErrorResponse
-    }
-
-    const detail =
-      typeof payload === 'string'
-        ? payload
-        : (payload as { message?: string; error?: { detail?: string } })?.message ??
-          (payload as { error?: { detail?: string } })?.error?.detail ??
-          'Request failed.'
-
-    return createErrorResponse(response.status, detail)
+export const handleApiResponse = (data: unknown): CustomFetchBaseQueryError | null => {
+  if (!data || typeof data !== 'object' || !('isError' in data)) {
+    return null
   }
 
-  if (payload && typeof payload === 'object' && 'isError' in payload) {
-    return payload as ApiResponse<T>
+  const apiResponse = data as ApiResponse
+
+  if (!isApiError(apiResponse)) {
+    return null
   }
+
+  const standardizedError = createStandardizedError(apiResponse)
 
   return {
-    result: payload as T,
-    isError: false,
-  } satisfies ApiSuccessResponse<T>
+    status: standardizedError.status,
+    data: standardizedError.data
+  }
 }

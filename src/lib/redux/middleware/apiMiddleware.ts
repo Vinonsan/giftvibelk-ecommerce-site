@@ -1,28 +1,32 @@
-import { requestFailed, requestStarted, requestSucceeded } from '@/lib/redux/slices/common'
-import type { AppAction, AppMiddleware } from '@/lib/redux/store'
+"use client";
 
-function hasRequestMeta(action: AppAction): action is AppAction & {
-  meta: { requestKey: string; requestStatus?: 'started' | 'succeeded' | 'failed'; error?: string }
-} {
-  return Boolean(action.meta && typeof action.meta.requestKey === 'string')
-}
+import { isRejectedWithValue, type Middleware } from "@reduxjs/toolkit";
 
-export const apiMiddleware: AppMiddleware = (store) => (next) => (action) => {
-  if (hasRequestMeta(action)) {
-    const { requestKey, requestStatus, error } = action.meta
+type ApiErrorPayload = {
+  status?: number | string;
+  data?: unknown;
+};
 
-    if (requestStatus === 'started') {
-      store.dispatch(requestStarted(requestKey))
-    }
+type RejectedAction = {
+  type: string;
+  payload?: ApiErrorPayload;
+};
 
-    if (requestStatus === 'succeeded') {
-      store.dispatch(requestSucceeded(requestKey))
-    }
+export const apiMiddleware: Middleware = () => (next) => (action) => {
+  if (isRejectedWithValue(action)) {
+    const { status, data } = (action as RejectedAction).payload ?? {};
 
-    if (requestStatus === 'failed') {
-      store.dispatch(requestFailed(requestKey, error ?? 'Request failed'))
+    console.warn("[API Error]", {
+      status,
+      data,
+      actionType: (action as RejectedAction).type,
+    });
+
+    if (status === 401) {
+      localStorage.removeItem("admin_token");
+      window.location.href = "/login";
     }
   }
 
-  return next(action)
-}
+  return next(action);
+};

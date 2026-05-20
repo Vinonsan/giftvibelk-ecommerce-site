@@ -1,8 +1,5 @@
-import type { CommonState } from '@/lib/redux/slices/common/types'
+import { CommonState } from './types'
 
-export const commonInitialState: CommonState = {
-  authToken: null,
-  requests: {},
-  lastError: null,
-  isSidebarCollapsed: false,
+export const initialState: CommonState = {
+  isSidebarCollapsed: false
 }

@@ -1,25 +1,17 @@
-import { buildQueryString } from '@/lib/redux/api/_utils/queryParams'
-import type { ApiRequestConfig } from '@/lib/types/api'
-import { getApiPrefix } from '@/lib/utils/environment'
+import type { ApiError, ApiErrorResponse, ApiResponse, ApiSuccessResponse } from './types/api'
 
-export function createRequestUrl({ endpoint, params }: Pick<ApiRequestConfig, 'endpoint' | 'params'>): string {
-  const normalizedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`
-  return `${getApiPrefix()}${normalizedEndpoint}${buildQueryString(params)}`
+export const isApiError = <T>(response: ApiResponse<T>): response is ApiErrorResponse => {
+  return response.isError
 }
 
-export function resolveRequestBody(body: ApiRequestConfig['body']): BodyInit | undefined {
-  if (!body) {
-    return undefined
-  }
+export const isApiSuccess = <T>(response: ApiResponse<T>): response is ApiSuccessResponse<T> => {
+  return !response.isError
+}
 
-  if (
-    typeof body === 'string' ||
-    body instanceof FormData ||
-    body instanceof Blob ||
-    body instanceof URLSearchParams
-  ) {
-    return body
-  }
+export const extractApiData = <T>(response: ApiSuccessResponse<T>): T => {
+  return response.result
+}
 
-  return JSON.stringify(body)
+export const extractApiError = (response: ApiErrorResponse): ApiError => {
+  return response.error
 }

@@ -1,35 +1,11 @@
 'use client'
 
-import {
-  createContext,
-  createElement,
-  useContext,
-  useState,
-  useSyncExternalStore,
-  type PropsWithChildren,
-} from 'react'
+import { useDispatch, useSelector, type TypedUseSelectorHook } from 'react-redux'
 
-import { makeStore, store as defaultStore, type AppDispatch, type AppStore, type RootState } from '@/lib/redux/store'
+import type { AppDispatch, RootState } from './store'
 
-const StoreContext = createContext<AppStore>(defaultStore)
+export { default as StoreProvider } from './reduxProvider'
 
-export function StoreProvider({ children }: PropsWithChildren) {
-  const [localStore] = useState<AppStore>(makeStore)
+export const useAppDispatch = () => useDispatch<AppDispatch>()
 
-  return createElement(StoreContext.Provider, { value: localStore }, children)
-}
-
-export function useStore(): AppStore {
-  return useContext(StoreContext)
-}
-
-export function useAppDispatch(): AppDispatch {
-  return useStore().dispatch
-}
-
-export function useAppSelector<TSelected>(selector: (state: RootState) => TSelected): TSelected {
-  const currentStore = useStore()
-  const getSnapshot = () => selector(currentStore.getState())
-
-  return useSyncExternalStore(currentStore.subscribe, getSnapshot, getSnapshot)
-}
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector

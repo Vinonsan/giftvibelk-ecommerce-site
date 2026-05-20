@@ -139,6 +139,24 @@ const hasActiveDescendant = (item: MenuItem | SubMenuItem, pathname: string): bo
   return item.children?.some((child) => hasActivePath(child, pathname) || hasActiveDescendant(child, pathname)) ?? false
 }
 
+const getPathDepth = (href: string) => href.split('/').filter(Boolean).length
+
+const isMostSpecificActive = (item: SubMenuItem, siblings: SubMenuItem[], pathname: string) => {
+  const itemActive = hasActivePath(item, pathname) || hasActiveDescendant(item, pathname)
+
+  if (!itemActive) {
+    return false
+  }
+
+  return !siblings.some((sibling) => {
+    if (sibling.href === item.href) {
+      return false
+    }
+
+    return getPathDepth(sibling.href) > getPathDepth(item.href) && hasActivePath(sibling, pathname)
+  })
+}
+
 const getDefaultExpandedItems = (pathname: string) => {
   const expandedItems: string[] = []
 
@@ -259,7 +277,7 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }: SidebarProp
                       } ${
                         active
                           ? 'bg-primary text-white shadow-sm'
-                          : 'bg-primary/5 text-admin-muted hover:bg-primary/10 hover:text-primary'
+                          : 'text-admin-muted hover:text-primary'
                       }` }
                     >
                       <span className="flex min-w-0 items-center gap-3">
@@ -281,7 +299,7 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }: SidebarProp
                       } ${
                         active
                           ? 'bg-primary text-white shadow-sm'
-                          : 'bg-primary/5 text-admin-muted hover:bg-primary/10 hover:text-primary'
+                          : 'text-admin-muted hover:text-primary'
                       }` }
                     >
                       <span className="flex min-w-0 items-center gap-3">
@@ -292,10 +310,10 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }: SidebarProp
                   ) }
 
                   { item.children && expanded && !isCollapsed ? (
-                    <ul className="mt-1.5 space-y-1 border-l border-admin-border pl-4">
+                    <ul className="mt-3 space-y-3 border-l border-admin-border pl-4">
                       { item.children.map((subItem) => {
                         const SubIcon = subItem.icon
-                        const subActive = isLinkActive(subItem)
+                        const subActive = isMostSpecificActive(subItem, item.children ?? [], pathname)
                         const subExpanded = expandedItems.includes(subItem.label) || activeExpandedItems.includes(subItem.label)
 
                         return (
@@ -307,7 +325,7 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }: SidebarProp
                                 className={ `flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
                                   subActive
                                     ? 'bg-primary text-white shadow-sm'
-                                    : 'bg-primary/5 text-admin-muted hover:bg-primary/10 hover:text-primary'
+                                    : 'text-admin-muted hover:text-primary'
                                 }` }
                               >
                                 <span className="flex min-w-0 items-center gap-3">
@@ -321,10 +339,10 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }: SidebarProp
                               <Link
                                 href={ subItem.href }
                                 onClick={ onClose }
-                                className={ `flex items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
+                                className={ `flex items-center justify-between gap-6 rounded-xl px-3 py-2.5 text-sm font-medium transition ${
                                   subActive
-                                    ? 'bg-primary text-white shadow-sm'
-                                    : 'bg-primary/5 text-admin-muted hover:bg-primary/10 hover:text-primary'
+                                    ? 'bg-primary/5 text-primary shadow-sm'
+                                    : 'text-admin-muted hover:text-primary'
                                 }` }
                               >
                                 <span className="flex min-w-0 items-center gap-3">
@@ -338,7 +356,7 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }: SidebarProp
                               <ul className="mt-1 space-y-1 pl-6">
                                 { subItem.children.map((childItem) => {
                                   const ChildIcon = childItem.icon
-                                  const childActive = isLinkActive(childItem)
+                                  const childActive = isMostSpecificActive(childItem, subItem.children ?? [], pathname)
 
                                   return (
                                     <li key={ childItem.label }>
@@ -347,8 +365,8 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }: SidebarProp
                                         onClick={ onClose }
                                         className={ `flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition ${
                                           childActive
-                                            ? 'bg-primary text-white shadow-sm'
-                                            : 'bg-primary/5 text-admin-muted hover:bg-primary/10 hover:text-primary'
+                                            ? 'bg-primary/5 text-white shadow-sm'
+                                            : 'text-admin-muted hover:text-primary'
                                         }` }
                                       >
                                         <ChildIcon className="size-4 shrink-0" />
@@ -375,7 +393,7 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }: SidebarProp
             type="button"
             onClick={ handleLogout }
             title={ isCollapsed ? 'Logout' : undefined }
-            className={ `flex w-full items-center gap-3 rounded-2xl border border-admin-border bg-primary/5 px-4 py-3 text-sm font-semibold text-admin-muted transition hover:border-primary/40 hover:bg-primary/10 hover:text-primary ${
+            className={ `flex w-full items-center gap-3 rounded-2xl border border-admin-border px-4 py-3 text-sm font-semibold text-admin-muted transition hover:border-primary/40 hover:text-primary ${
               isCollapsed ? 'justify-center px-0' : ''
             }` }
           >

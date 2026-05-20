@@ -1,5 +1,5 @@
 export * from './initialState'
 export * from './selectors'
-export { default as commonReducer } from './slice'
+export { default as catagoryReducer } from './slice'
 export * from './slice'
 export * from './types'

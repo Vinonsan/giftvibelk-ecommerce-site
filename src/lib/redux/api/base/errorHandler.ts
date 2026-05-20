@@ -1,31 +1,46 @@
-import type { ApiErrorResponse, ApiErrorShape } from '@/lib/types/api'
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
 
-function createFallbackError(message: string, status = 500, code = 'API_ERROR'): ApiErrorResponse {
+import { isApiError } from './apiUtils'
+import type { ApiResponse } from './types/api'
+
+export interface CustomFetchBaseQueryError {
+  isError: boolean
+  title: string
+  detail: string
+  status: number
+  code: string
+}
+
+export const handleApiError = (error: FetchBaseQueryError): CustomFetchBaseQueryError | null => {
+  if (!error.data || typeof error.data !== 'object' || !('isError' in error.data)) {
+    return null
+  }
+
+  const apiResponse = error.data as ApiResponse
+
+  if (!isApiError(apiResponse)) {
+    return null
+  }
+
+  const apiError = apiResponse.error
+
   return {
-    result: null,
     isError: true,
-    error: {
-      title: 'Request Failed',
-      detail: message,
-      status,
-      code,
-      extensions: {},
-    },
+    title: apiError.title,
+    detail: apiError.detail,
+    status: apiError.status,
+    code: apiError.code
   }
 }
 
-export function normalizeApiError(error: unknown): ApiErrorResponse {
-  if (error && typeof error === 'object' && 'isError' in error) {
-    return error as ApiErrorResponse
-  }
-
-  if (error instanceof Error) {
-    return createFallbackError(error.message)
-  }
-
-  return createFallbackError('Something went wrong while calling the API.')
-}
-
-export function getApiErrorMessage(error: ApiErrorShape | null | undefined): string {
-  return error?.detail ?? error?.title ?? 'Something went wrong.'
+export const isCustomApiError = (error: unknown): error is CustomFetchBaseQueryError => {
+  return (
+    error !== null &&
+    typeof error === 'object' &&
+    'detail' in error &&
+    'isError' in error &&
+    'title' in error &&
+    'status' in error &&
+    'code' in error
+  )
 }

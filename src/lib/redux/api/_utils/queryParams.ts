@@ -1,25 +1,43 @@
-import type { QueryParams } from '@/lib/redux/api/_utils/types/query-params'
+import { CommonRequestParams } from './types/query-params'
 
-export function buildQueryString(params?: QueryParams): string {
-  if (!params) {
-    return ''
+export function buildQueryUrl<T extends CommonRequestParams>(
+  params: T | undefined,
+  baseUrl: string,
+  specificParams?: Record<
+    string,
+    string | number | boolean | Array<string | number | boolean> | undefined
+  >
+): string {
+  if (!params && (!specificParams || !Object.values(specificParams).some((v) => v !== undefined))) {
+    return baseUrl
   }
 
   const searchParams = new URLSearchParams()
 
-  Object.entries(params).forEach(([key, value]) => {
-    if (value === null || value === undefined || value === '') {
-      return
-    }
+  if (params?.searchText) {
+    searchParams.append('Filter.SearchText', params.searchText)
+  }
 
-    if (Array.isArray(value)) {
-      value.forEach((item) => searchParams.append(key, String(item)))
-      return
-    }
+  if (params?.pagination?.pageNumber) {
+    searchParams.append('Pagination.PageNumber', params.pagination.pageNumber.toString())
+  }
 
-    searchParams.set(key, String(value))
-  })
+  if (params?.pagination?.pageSize) {
+    searchParams.append('Pagination.PageSize', params.pagination.pageSize.toString())
+  }
+
+  if (specificParams) {
+    Object.entries(specificParams).forEach(([key, value]) => {
+      if (value !== undefined) {
+        if (Array.isArray(value)) {
+          searchParams.append(key, value.map((item) => item.toString()).join(','))
+        } else {
+          searchParams.append(key, value.toString())
+        }
+      }
+    })
+  }
 
   const queryString = searchParams.toString()
-  return queryString ? `?${queryString}` : ''
+  return queryString ? `${baseUrl}?${queryString}` : baseUrl
 }
