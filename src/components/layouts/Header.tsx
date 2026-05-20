@@ -1,0 +1,111 @@
+'use client';
+
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import ThemeToggle from "@/components/ui/ThemeToggle";
+import Svg from "@/components/ui/Svg";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/collections", label: "Collections" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/contact", label: "Contact" },
+];
+
+function cn(...classes: Array<string | false | null | undefined>) {
+  return classes.filter(Boolean).join(" ");
+}
+
+function isActiveLink(pathname: string, href: string) {
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+export default function Header() {
+  const pathname = usePathname();
+
+  return (
+    <header className="sticky top-0 z-40 border-b border-primary/10 bg-background/95 backdrop-blur">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-4 py-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/logo/4.png"
+            alt="GiftVibeLK online gift shop logo"
+            width={180}
+            height={60}
+            priority
+            className="h-12 w-auto object-contain sm:h-14 bg-primary/5 rounded-xl p-2"
+          />
+          <div>
+            <span className="text-xl font-bold text-foreground">
+              GiftVibe<span className="text-primary">LK</span>
+            </span>
+          </div>
+        </Link>
+
+        <nav className="hidden items-center gap-2 rounded-full border border-primary/10 px-2 py-2 md:flex">
+          {navLinks.map((link) => {
+            const isActive = isActiveLink(pathname, link.href);
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "rounded-full px-4 py-2 text-sm font-medium transition",
+                  isActive
+                    ? "bg-secondary text-white shadow-[0_10px_24px_rgba(11,31,58,0.16)]"
+                    : "text-muted-foreground hover:bg-secondary/10 hover:text-secondary",
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
+
+          <Link
+            href="/cart"
+            aria-label="Open cart"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary/10 text-foreground transition hover:border-primary hover:text-primary"
+          >
+            <Svg name="cart" className="h-5 w-5" />
+          </Link>
+        </div>
+      </div>
+
+      <nav className="border-t border-primary/10 px-4 py-3 md:hidden sm:px-6">
+        <div className="flex flex-wrap gap-2">
+          {navLinks.map((link) => {
+            const isActive = isActiveLink(pathname, link.href);
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "rounded-full border px-4 py-2 text-sm font-medium transition",
+                  isActive
+                    ? "border-primary bg-primary text-white"
+                    : "border-primary/10 text-muted-foreground hover:border-primary hover:text-primary",
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
+    </header>
+  );
+}
