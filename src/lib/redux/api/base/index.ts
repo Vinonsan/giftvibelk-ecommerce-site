@@ -35,3 +35,5 @@ export const apiBase = async(
 
   return result
 }
+
+export * from './publicApiBase'

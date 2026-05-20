@@ -3,6 +3,9 @@ import type { BackendPaginatedResponse } from '@/lib/redux/api/_utils/types/pagi
 export interface ICatagoryApiResponseItem {
   id: string
   name: string
+  image?: string | null
+  imageUrl?: string | null
+  url?: string | null
   createdAt: string
   updatedAt: string
   isArchived: boolean

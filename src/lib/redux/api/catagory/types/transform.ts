@@ -3,6 +3,7 @@ import type { PaginatedTransformResult } from '@/lib/redux/api/_utils/types/pagi
 export interface ICatagoryTransform {
   id: string
   name: string
+  imageUrl: string
   createdAt: string
   updatedAt: string
   isArchived: boolean

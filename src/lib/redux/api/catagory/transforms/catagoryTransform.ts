@@ -4,6 +4,10 @@ import { transformPaginatedData } from '@/lib/redux/api/_utils/paginationTransfo
 import type { ICatagoryGetAllApiResponse, ICatagorySingleApiResponse } from '../types/response'
 import type { ICatagoryGetAllTransformResult, ICatagoryTransform } from '../types/transform'
 
+function resolveCatagoryImageUrl(data: { image?: string | null; imageUrl?: string | null; url?: string | null }) {
+  return data.imageUrl ?? data.image ?? data.url ?? ''
+}
+
 export const transformGetAllCatagoryResponse = createApiTransformer<
   ICatagoryGetAllApiResponse,
   ICatagoryGetAllTransformResult
@@ -11,6 +15,7 @@ export const transformGetAllCatagoryResponse = createApiTransformer<
   return transformPaginatedData(response, (data) => ({
     id: data.id,
     name: data.name,
+    imageUrl: resolveCatagoryImageUrl(data),
     createdAt: data.createdAt,
     updatedAt: data.updatedAt,
     isArchived: data.isArchived,
@@ -24,6 +29,7 @@ export const transformGetByIdCatagoryResponse = createApiTransformer<
 >((response) => ({
   id: response.data.id,
   name: response.data.name,
+  imageUrl: resolveCatagoryImageUrl(response.data),
   createdAt: response.data.createdAt,
   updatedAt: response.data.updatedAt,
   isArchived: response.data.isArchived,

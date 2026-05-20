@@ -4,8 +4,27 @@ import Link from "next/link";
 import Image from "next/image";
 import { giftCategories } from "../constants/home";
 import Heading from "@/components/layouts/Heading";
+import { useGetAllCatagoryQuery } from "@/lib/redux/api/catagory/api";
+
+function createCategorySlug(name: string) {
+  return name
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
 
 const Categories = () => {
+  const { data, isLoading } = useGetAllCatagoryQuery({ page: 1, limit: 10 });
+  const apiCategories = data?.items.filter((category) => !category.isArchived) ?? [];
+  const categories = apiCategories.length
+    ? apiCategories.map((category, index) => ({
+        title: category.name,
+        image: category.imageUrl || giftCategories[index % giftCategories.length]?.image || "/categoroies/3.png",
+        slug: createCategorySlug(category.name),
+      }))
+    : giftCategories;
+
   return (
     <section aria-label="Gift categories Sri Lanka" >
       <div className="space-y-12">
@@ -15,7 +34,7 @@ const Categories = () => {
         />
 
         <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {giftCategories.map((category, index) => (
+          {categories.map((category, index) => (
             <Link
               key={category.slug}
               id={category.slug}
@@ -42,6 +61,10 @@ const Categories = () => {
             </Link>
           ))}
         </div>
+
+        {isLoading && !apiCategories.length ? (
+          <p className="sr-only" aria-live="polite">Loading gift categories</p>
+        ) : null}
       </div>
     </section>
   );

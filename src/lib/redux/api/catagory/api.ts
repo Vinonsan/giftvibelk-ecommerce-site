@@ -3,11 +3,11 @@ import { createApi } from '@reduxjs/toolkit/query/react'
 import { getCatagoryByIdEndpoint, getCatagoryListEndpoint } from './endpoint'
 import { IGetAllCatagoryRequest, IGetCatagoryByIdRequest } from './types/request'
 import { ICatagoryGetAllTransformResult, ICatagoryTransform } from './types/transform'
-import { apiBase } from '../base'
+import { publicApiBase } from '../base'
 
 export const catagoryApi = createApi({
   reducerPath: 'catagoryApi',
-  baseQuery: apiBase,
+  baseQuery: publicApiBase,
   tagTypes: ['Catagory'],
   endpoints: (builder) => ({
     getAllCatagory: builder.query<ICatagoryGetAllTransformResult, IGetAllCatagoryRequest | void>(
