@@ -44,7 +44,7 @@ export const createCatagoryEndpoint = {
 export const updateCatagoryEndpoint = {
   query: ({ id, ...body }: IUpdateCatagoryRequest) => ({
     url: `categories/${id}`,
-    method: 'PATCH' as const,
+    method: 'PUT' as const,
     body,
   }),
   transformResponse: transformGetByIdCatagoryResponse,

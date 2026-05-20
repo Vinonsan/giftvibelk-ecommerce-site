@@ -143,10 +143,10 @@ const DataTable = <TData,>({
   const renderPageButton = (targetPage: number) => {
     const isActive = pageNumber === targetPage
     const className = cn(
-      'inline-flex size-10 items-center justify-center rounded-full border text-sm font-semibold transition',
+      'inline-flex size-9 items-center justify-center rounded-lg text-sm font-semibold transition',
       isActive
-        ? 'border-primary bg-primary text-white shadow-lg shadow-primary/20'
-        : 'border-admin-border text-admin-text hover:border-primary/35 hover:text-primary',
+        ? 'bg-primary text-white shadow-sm shadow-primary/20'
+        : 'text-admin-muted hover:bg-primary/8 hover:text-primary',
     )
 
     if (paginationType === 'link' && baseUrl) {
@@ -175,14 +175,14 @@ const DataTable = <TData,>({
   const renderSkeletonRows = () => (
     <>
       {Array.from({ length: Math.min(Math.max(pageSize, 3), 10) }).map((_, rowIndex) => (
-        <tr key={`loading-${rowIndex}`} className="border-b border-admin-border/70">
+        <tr key={`loading-${rowIndex}`} className="border-b border-admin-border/60 last:border-b-0">
           {columns.map((column, columnIndex) => (
             <td
               key={`loading-${rowIndex}-${columnIndex}`}
-              className="border-r border-admin-border/70 px-5 py-4 last:border-r-0"
+              className="px-6 py-5"
               style={{ width: getColumnWidth(columns, column.id ?? String(columnIndex)) }}
             >
-              <div className="h-4 w-3/4 animate-pulse rounded-full bg-primary/10" />
+              <div className="h-4 w-3/4 animate-pulse rounded-full bg-admin-border/70" />
             </td>
           ))}
         </tr>
@@ -192,12 +192,12 @@ const DataTable = <TData,>({
 
   return (
     <div className="w-full">
-      <div className="overflow-hidden rounded-xl border border-admin-border">
+      <div className="overflow-hidden rounded-xl border border-admin-border  shadow-sm shadow-black/5">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-full table-fixed border-collapse">
+          <table className="w-full min-w-full table-fixed border-separate border-spacing-0">
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
-              <tr key={headerGroup.id}>
+              <tr key={headerGroup.id} className="bg-admin-surface-soft/80">
                 {headerGroup.headers.map((header) => {
                   const canSort = header.column.getCanSort() && Boolean(onSortChange)
                   const width = getColumnWidth(columns, header.column.id)
@@ -205,7 +205,7 @@ const DataTable = <TData,>({
                   return (
                       <th
                         key={header.id}
-                        className="border-b border-r border-admin-border px-5 py-4 text-left text-base font-bold uppercase tracking-[0.14em] text-admin-text last:border-r-0"
+                        className="border-b border-admin-border px-6 py-4 text-left text-xs font-bold uppercase tracking-[0.16em] text-admin-muted first:pl-7 last:pr-7"
                         style={{ width }}
                       >
                       <button
@@ -230,7 +230,7 @@ const DataTable = <TData,>({
           <tbody>
             {isError ? (
               <tr>
-                <td colSpan={columns.length} className="px-5 py-12 text-center">
+                <td colSpan={columns.length} className="px-6 py-14 text-center cursor-pointer">
                   {errorComponent ?? <p className="text-sm font-semibold text-error">{errorMessage}</p>}
                 </td>
               </tr>
@@ -238,10 +238,10 @@ const DataTable = <TData,>({
               loadingComponent ?? renderSkeletonRows()
             ) : (isEmpty ?? table.getRowModel().rows.length === 0) ? (
               <tr>
-                <td colSpan={columns.length} className="px-5 py-12 text-center">
+                <td colSpan={columns.length} className="px-6 py-14 text-center">
                   {emptyComponent ?? (
                     <div className="mx-auto max-w-sm">
-                      <p className="text-sm font-semibold text-admin-text">{emptyMessage}</p>
+                      <p className="text-base font-semibold text-admin-text">{emptyMessage}</p>
                       {emptyDescription ? <p className="mt-2 text-sm text-admin-muted">{emptyDescription}</p> : null}
                     </div>
                   )}
@@ -254,14 +254,14 @@ const DataTable = <TData,>({
                   onClick={() => onRowClick?.(row.original)}
                   onDoubleClick={() => onRowDoubleClick?.(row.original)}
                   className={cn(
-                    'border-b border-admin-border/70 transition last:border-b-0 hover:bg-primary/5 cursor-pointer',
+                    'border-b border-admin-border/60 transition last:border-b-0 hover:bg-primary/5 cursor-pointer',
                     (onRowClick || onRowDoubleClick) && 'cursor-pointer',
                   )}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td
                       key={cell.id}
-                      className="border-r border-admin-border/70 px-5 py-4 text-sm font-medium text-admin-text last:border-r-0"
+                      className="px-6 py-5 text-sm font-medium text-admin-text first:pl-7 last:pr-7"
                       style={{ width: getColumnWidth(columns, cell.column.id) }}
                     >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -276,14 +276,14 @@ const DataTable = <TData,>({
       </div>
 
       {isPagination ? (
-        <div className="mt-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="mt-4 flex flex-col gap-4   lg:flex-row lg:items-center lg:justify-between">
           <p className="text-sm font-medium text-admin-muted">
             Showing {firstItem} to {lastItem} of {totalCount} entries
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <label className="flex items-center gap-2 text-sm font-medium text-admin-muted">
-              Rows
+            <label className="flex items-center gap-2 text-sm font-semibold text-admin-muted">
+             
               <Select
                 options={pageSizeOptions.map((option) => ({ label: String(option), value: String(option) }))}
                 value={String(pageSize)}
@@ -300,10 +300,10 @@ const DataTable = <TData,>({
               <Button
                 type="button"
                 size="sm"
-                variant="outline"
+                variant="transparent"
                 disabled={pageNumber <= 1}
                 onClick={() => onPageNumberChange(Math.max(1, pageNumber - 1))}
-                className="px-3"
+                className="size-9 rounded-lg px-0"
               >
                 <ChevronLeft className="size-4" />
               </Button>
@@ -321,10 +321,10 @@ const DataTable = <TData,>({
               <Button
                 type="button"
                 size="sm"
-                variant="outline"
+                variant="transparent"
                 disabled={pageNumber >= totalPages}
                 onClick={() => onPageNumberChange(Math.min(totalPages, pageNumber + 1))}
-                className="px-3"
+                className="size-9 rounded-lg px-0"
               >
                 <ChevronRight className="size-4" />
               </Button>

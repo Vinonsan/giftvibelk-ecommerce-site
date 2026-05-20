@@ -1,44 +1,47 @@
 'use client'
 
-import { useEffect, useState, useSyncExternalStore } from 'react'
+import { useEffect, useState } from 'react'
 import type { PropsWithChildren } from 'react'
 import { useRouter } from 'next/navigation'
 
-import { useAppSelector } from '@/lib/redux/hooks'
-import { selectAuthToken } from '@/lib/redux/slices/auth'
+import { getAdminSessionToken } from '@/lib/auth/session'
+import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks'
+import { selectAuthToken, setAuthToken } from '@/lib/redux/slices/auth'
 import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 
-const tokenKeys = ['admin_token', 'giftvibelk_access_token']
-
-function subscribeToStorageUpdates(callback: () => void) {
-  window.addEventListener('storage', callback)
-  return () => window.removeEventListener('storage', callback)
-}
-
-function getStoredAuthToken() {
-  if (typeof window === 'undefined') {
-    return null
-  }
-
-  return tokenKeys.map((key) => window.localStorage.getItem(key)).find(Boolean) ?? null
-}
-
 export default function LayoutChildren({ children }: PropsWithChildren) {
   const router = useRouter()
+  const dispatch = useAppDispatch()
   const authToken = useAppSelector(selectAuthToken)
-  const storedAuthToken = useSyncExternalStore(subscribeToStorageUpdates, getStoredAuthToken, () => null)
+  const [storedAuthToken, setStoredAuthToken] = useState<string | null>(null)
+  const [isSessionChecked, setIsSessionChecked] = useState(false)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false)
   const hasAdminAccess = Boolean(authToken || storedAuthToken)
 
   useEffect(() => {
-    if (!hasAdminAccess) {
+    const syncSession = window.setTimeout(() => {
+      const token = getAdminSessionToken()
+      setStoredAuthToken(token)
+
+      if (token && !authToken) {
+        dispatch(setAuthToken(token))
+      }
+
+      setIsSessionChecked(true)
+    }, 0)
+
+    return () => window.clearTimeout(syncSession)
+  }, [authToken, dispatch])
+
+  useEffect(() => {
+    if (isSessionChecked && !hasAdminAccess) {
       router.replace('/login')
     }
-  }, [hasAdminAccess, router])
+  }, [hasAdminAccess, isSessionChecked, router])
 
-  if (!hasAdminAccess) {
+  if (!isSessionChecked || !hasAdminAccess) {
     return null
   }
 

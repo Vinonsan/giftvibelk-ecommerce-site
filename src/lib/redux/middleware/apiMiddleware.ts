@@ -1,6 +1,7 @@
 "use client";
 
 import { isRejectedWithValue, type Middleware } from "@reduxjs/toolkit";
+import { clearAdminSession } from "@/lib/auth/session";
 
 type ApiErrorPayload = {
   status?: number | string;
@@ -23,7 +24,7 @@ export const apiMiddleware: Middleware = () => (next) => (action) => {
     });
 
     if (status === 401) {
-      localStorage.removeItem("admin_token");
+      clearAdminSession();
       window.location.href = "/login";
     }
   }

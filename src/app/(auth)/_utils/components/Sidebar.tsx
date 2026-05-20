@@ -53,23 +53,23 @@ const menuItems: MenuItem[] = [
     icon: ClipboardList,
   },
   {
-    label: 'Products',
-    href: '/admin/products',
+    label: 'Stores',
+    href: '/admin/store',
     icon: PackageSearch,
     children: [
       {
         label: 'All Products',
-        href: '/admin/products',
+        href: '/admin/store/products',
         icon: Box,
       },
       {
         label: 'Categories',
-        href: '/admin/products/categories',
+        href: '/admin/store/categories',
         icon: Tags,
       },
       {
-        label: 'Featured',
-        href: '/admin/products/featured',
+        label: 'Combos',
+        href: '/admin/store/combos',
         icon: Sparkles,
       },
     ],

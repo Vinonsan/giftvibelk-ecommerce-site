@@ -2,13 +2,14 @@
 
 import { useAppDispatch } from '@/lib/redux/hooks'
 import { logout } from '@/lib/redux/slices/auth'
+import { clearAdminSession } from '@/lib/auth/session'
 
 export function useLogout() {
   const dispatch = useAppDispatch()
 
   return () => {
     dispatch(logout())
-    window.localStorage.removeItem('admin_token')
+    clearAdminSession()
     window.location.href = '/login'
   }
 }

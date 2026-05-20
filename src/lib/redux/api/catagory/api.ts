@@ -15,11 +15,21 @@ import {
   IUpdateCatagoryRequest,
 } from './types/request'
 import { ICatagoryGetAllTransformResult, ICatagoryTransform } from './types/transform'
-import { publicApiBase } from '../base'
+import { apiBase, publicApiBase } from '../base'
+
+const tokenRequiredEndpoints = new Set(['createCatagory', 'updateCatagory', 'deleteCatagory'])
+
+const catagoryBaseQuery: typeof apiBase = (args, api, extraOptions) => {
+  if (tokenRequiredEndpoints.has(api.endpoint)) {
+    return apiBase(args, api, extraOptions)
+  }
+
+  return publicApiBase(args, api, extraOptions)
+}
 
 export const catagoryApi = createApi({
   reducerPath: 'catagoryApi',
-  baseQuery: publicApiBase,
+  baseQuery: catagoryBaseQuery,
   tagTypes: ['Catagory'],
   endpoints: (builder) => ({
     getAllCatagory: builder.query<ICatagoryGetAllTransformResult, IGetAllCatagoryRequest | void>(

@@ -7,6 +7,7 @@ import { Mail } from 'lucide-react'
 
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
+import { saveAdminSession } from '@/lib/auth/session'
 import { useAppDispatch } from '@/lib/redux/hooks'
 import { setAuthToken } from '@/lib/redux/slices/auth'
 import { getApiBaseUrl } from '@/lib/utils'
@@ -69,9 +70,7 @@ export default function AdminLoginPage() {
     try {
       setIsLoading(true)
       const response = await loginAdmin(email, password)
-      window.localStorage.setItem('admin_token', response.token)
-      window.localStorage.setItem('giftvibelk_access_token', response.token)
-      window.localStorage.setItem('admin_role', response.role)
+      saveAdminSession(response.token, response.role)
       dispatch(setAuthToken(response.token))
       router.replace('/admin')
     } catch (error) {
