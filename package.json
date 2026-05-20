@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",
+    "@tanstack/react-table": "^8.21.3",
     "icons": "^1.0.0",
     "lucide-react": "^1.7.0",
     "next": "16.2.2",

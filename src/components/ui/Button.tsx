@@ -15,6 +15,7 @@ type ButtonVariant =
   | "outline"
   | "border"
   | "white"
+  | "gray"
 type ButtonSize = "sm" | "md" | "lg";
 
 type BaseProps = {
@@ -51,12 +52,13 @@ const variantClasses: Record<ButtonVariant, string> = {
   transparent:
     "bg-transparent text-foreground hover:bg-primary/8 hover:text-primary",
   none: "bg-transparent text-foreground hover:bg-transparent hover:text-primary",
+  gray: "bg-gray-200 text-foreground hover:bg-gray-300",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "min-h-10 px-4 text-sm",
-  md: "min-h-12 px-6 py-3 text-sm",
-  lg: "min-h-14 px-7 py-4 text-base",
+  sm: "py-2 px-3 text-sm",
+  md: "py-3 px-4 py-3 text-sm",
+  lg: "px-6 py-4 text-base",
 };
 
 function cn(...classes: Array<string | false | null | undefined>) {
