@@ -11,6 +11,7 @@ import {
   useGetAllCatagoryQuery,
   useUpdateCatagoryMutation,
 } from '@/lib/redux/api/catagory/api'
+import { useUploadProductImageMutation } from '@/lib/redux/api/upload/api'
 import type { ICatagoryTransform } from '@/lib/redux/api/catagory/types/transform'
 import type { ApiErrorShape } from '@/lib/types/api'
 import Button from '@/components/ui/Button'
@@ -41,10 +42,11 @@ export default function PageChildren() {
   const [createCatagory, createState] = useCreateCatagoryMutation()
   const [updateCatagory, updateState] = useUpdateCatagoryMutation()
   const [deleteCatagory, deleteState] = useDeleteCatagoryMutation()
+  const [uploadProductImage, uploadState] = useUploadProductImageMutation()
   const categories = data?.items ?? []
   const pagination = data?.pagination
   const loading = isLoading || isFetching
-  const isSubmitting = createState.isLoading || updateState.isLoading
+  const isSubmitting = createState.isLoading || updateState.isLoading || uploadState.isLoading
 
   const openAddModal = () => {
     setEditingCategory(null)
@@ -57,10 +59,13 @@ export default function PageChildren() {
   }
 
   const handleFormSubmit = async ({ id, name, image }: { id?: string; name: string; image: File | null }) => {
+    const uploadedImage = image ? await uploadProductImage({ file: image }).unwrap() : null
+    const imageUrl = uploadedImage?.imageUrl ?? (id ? editingCategory?.imageUrl : undefined)
+
     if (id) {
-      await updateCatagory({ id, name, image }).unwrap()
+      await updateCatagory({ id, name, imageUrl }).unwrap()
     } else {
-      await createCatagory({ name, image }).unwrap()
+      await createCatagory({ name, imageUrl }).unwrap()
     }
 
     setIsFormOpen(false)

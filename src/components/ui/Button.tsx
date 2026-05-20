@@ -65,6 +65,19 @@ function cn(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
 
+function getNativeButtonProps(props: NativeButtonProps) {
+  const nativeProps = { ...props };
+
+  delete nativeProps.children;
+  delete nativeProps.className;
+  delete nativeProps.fullWidth;
+  delete nativeProps.size;
+  delete nativeProps.variant;
+  delete nativeProps.href;
+
+  return nativeProps;
+}
+
 export default function Button(props: ButtonProps) {
   const {
     children,
@@ -92,10 +105,11 @@ export default function Button(props: ButtonProps) {
     );
   }
 
-  const { type = "button", ...buttonProps } = props;
+  const buttonProps = getNativeButtonProps(props);
+  const { type = "button" } = buttonProps;
 
   return (
-    <button type={type} className={classes} {...buttonProps}>
+    <button {...buttonProps} type={type} className={classes}>
       {children}
     </button>
   );

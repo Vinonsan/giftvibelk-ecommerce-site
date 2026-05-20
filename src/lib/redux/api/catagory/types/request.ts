@@ -12,7 +12,7 @@ export interface IGetCatagoryByIdRequest {
 
 export interface ICreateCatagoryRequest {
   name: string
-  image?: File | null
+  imageUrl?: string
 }
 
 export interface IUpdateCatagoryRequest extends ICreateCatagoryRequest {

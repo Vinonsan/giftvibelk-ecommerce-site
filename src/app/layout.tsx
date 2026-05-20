@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 
-import { StoreProvider } from "@/lib/redux/hooks";
+import StoreProvider from "@/lib/redux/reduxProvider";
 import { getJsonLd, siteConfig } from "@/lib/seo";
 
 const jsonLd = JSON.stringify(getJsonLd()).replace(/</g, "\\u003c");

@@ -8,17 +8,6 @@ import {
 } from './types/request'
 import { buildQueryUrl } from '../_utils/queryParams'
 
-function createCatagoryFormData(body: ICreateCatagoryRequest) {
-  const formData = new FormData()
-  formData.append('name', body.name)
-
-  if (body.image) {
-    formData.append('image', body.image)
-  }
-
-  return formData
-}
-
 export const getCatagoryListEndpoint = {
   query: (params?: IGetAllCatagoryRequest) => {
     const url = buildQueryUrl(params, 'categories', {
@@ -46,7 +35,7 @@ export const createCatagoryEndpoint = {
   query: (body: ICreateCatagoryRequest) => ({
     url: 'categories',
     method: 'POST' as const,
-    body: createCatagoryFormData(body),
+    body,
   }),
   transformResponse: transformGetByIdCatagoryResponse,
   invalidatesTags: ['Catagory'] as const,
@@ -56,7 +45,7 @@ export const updateCatagoryEndpoint = {
   query: ({ id, ...body }: IUpdateCatagoryRequest) => ({
     url: `categories/${id}`,
     method: 'PATCH' as const,
-    body: createCatagoryFormData(body),
+    body,
   }),
   transformResponse: transformGetByIdCatagoryResponse,
   invalidatesTags: ['Catagory'] as const,
