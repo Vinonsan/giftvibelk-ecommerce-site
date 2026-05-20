@@ -181,20 +181,8 @@ const Sidebar = ({ isOpen, isCollapsed, onClose, onToggleCollapse }: SidebarProp
   const [expandedItems, setExpandedItems] = useState<string[]>(() => getDefaultExpandedItems(pathname))
   const activeExpandedItems = getDefaultExpandedItems(pathname)
 
-  const isExactActive = (href: string) => {
-    return pathname === href
-  }
-
   const isLinkActive = (item: MenuItem | SubMenuItem) => {
-    if (item.href === '/admin') {
-      return pathname === item.href
-    }
-
-    if (item.children) {
-      return hasActivePath(item, pathname) || hasActiveDescendant(item, pathname)
-    }
-
-    return isExactActive(item.href)
+    return hasActivePath(item, pathname) || hasActiveDescendant(item, pathname)
   }
 
   const toggleTopLevelItem = (label: string) => {

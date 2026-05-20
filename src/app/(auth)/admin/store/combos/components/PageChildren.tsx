@@ -7,7 +7,7 @@ import { useState } from 'react'
 import Button from '@/components/ui/Button'
 import DataTable, { type ColumnDef } from '@/components/ui/DataTable'
 import { combos } from '../constants'
-import type { Combo, ComboStatus } from '../types'
+import type { Combo } from '../types'
 import AddProductModal from './AddProductModal'
 import DeleteProductModal from './DeleteProductModal'
 
@@ -18,7 +18,6 @@ function formatDate(value: string) {
     year: 'numeric',
   }).format(new Date(value))
 }
-
 
 export default function PageChildren() {
   const [page, setPage] = useState(1)
