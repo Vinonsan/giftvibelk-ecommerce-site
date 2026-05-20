@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { ChevronLeft, ChevronRight, Plus, RefreshCw, Tags } from 'lucide-react'
 
-import { useGetAllCatagoryQuery } from '@/lib/redux/api/catagories/api'
+import { useGetAllCatagoryQuery } from '@/lib/redux/api/catagory/api'
 import type { ApiErrorShape } from '@/lib/types/api'
 import ProductSectionShell from '../../../_utils/components/ProductSectionShell'
 

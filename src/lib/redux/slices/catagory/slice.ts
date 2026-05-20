@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
-import type { ICatagoryTransform } from '@/lib/redux/api/catagory/types/trasnform'
+import type { ICatagoryTransform } from '@/lib/redux/api/catagory/types/transform'
 
 import { initialState } from './initialState'
 

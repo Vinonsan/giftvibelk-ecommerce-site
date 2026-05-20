@@ -1,4 +1,6 @@
-export interface ICatagoryResponseItem {
+import type { BackendPaginatedResponse } from '@/lib/redux/api/_utils/types/pagination-transform'
+
+export interface ICatagoryApiResponseItem {
   id: string
   name: string
   createdAt: string
@@ -7,26 +9,11 @@ export interface ICatagoryResponseItem {
   archivedAt: string | null
 }
 
-export interface IGetAllCatagoryResponse {
+export interface ICatagoryGetAllApiResponse extends BackendPaginatedResponse<ICatagoryApiResponseItem> {
   message?: string
-  data: ICatagoryResponseItem[]
-  pagination: {
-    page?: number
-    limit?: number
-    total?: number
-    totalItems?: number
-    totalPages?: number
-  }
 }
 
-export interface ICatagorySingleResponse {
+export interface ICatagorySingleApiResponse {
   message?: string
-  data: ICatagoryResponseItem
-}
-
-export interface IDeleteCatagoryResponse {
-  message?: string
-  data: {
-    id: string
-  }
+  data: ICatagoryApiResponseItem
 }

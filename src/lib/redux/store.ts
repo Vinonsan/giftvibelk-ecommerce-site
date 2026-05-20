@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import { baseApi } from '@/lib/redux/api/base/baseApi'
+import { catagoryApi } from '@/lib/redux/api/catagory/api'
 import { apiMiddleware } from '@/lib/redux/middleware/apiMiddleware'
 import { authReducer } from '@/lib/redux/slices/auth'
 import { commonReducer } from '@/lib/redux/slices/common'
@@ -12,10 +12,10 @@ export const makeStore = () =>
       auth: authReducer,
       common: commonReducer,
       catagory: catagoryReducer,
-      [baseApi.reducerPath]: baseApi.reducer,
+      [catagoryApi.reducerPath]: catagoryApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(baseApi.middleware, apiMiddleware),
+      getDefaultMiddleware().concat(catagoryApi.middleware, apiMiddleware),
     devTools: process.env.NODE_ENV !== 'production',
   })
 

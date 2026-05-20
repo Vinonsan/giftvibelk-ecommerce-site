@@ -9,17 +9,3 @@ export interface IGetAllCatagoryRequest extends CommonRequestParams {
 export interface IGetCatagoryByIdRequest {
   id: string
 }
-
-export interface ICreateCatagoryRequest {
-  name: string
-}
-
-export interface IUpdateCatagoryRequest {
-  id: string
-  name?: string
-  isArchived?: boolean
-}
-
-export interface IDeleteCatagoryRequest {
-  id: string
-}

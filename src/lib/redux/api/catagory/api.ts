@@ -1,36 +1,22 @@
-import { baseApi } from '@/lib/redux/api/base/baseApi'
-import {
-  createCatagoryEndpoint,
-  deleteCatagoryEndpoint,
-  getCatagoryByIdEndpoint,
-  getCatagoryListEndpoint,
-  updateCatagoryEndpoint,
-} from '@/lib/redux/api/catagory/endpoint'
-import type {
-  ICreateCatagoryRequest,
-  IDeleteCatagoryRequest,
-  IGetAllCatagoryRequest,
-  IGetCatagoryByIdRequest,
-  IUpdateCatagoryRequest,
-} from '@/lib/redux/api/catagory/types/request'
-import type { ICatagoryGetAllTransformResult, ICatagoryTransform } from './types/trasnform'
+import { createApi } from '@reduxjs/toolkit/query/react'
 
-export const catagoryApi = baseApi.injectEndpoints({
+import { getCatagoryByIdEndpoint, getCatagoryListEndpoint } from './endpoint'
+import { IGetAllCatagoryRequest, IGetCatagoryByIdRequest } from './types/request'
+import { ICatagoryGetAllTransformResult, ICatagoryTransform } from './types/transform'
+import { apiBase } from '../base'
+
+export const catagoryApi = createApi({
+  reducerPath: 'catagoryApi',
+  baseQuery: apiBase,
+  tagTypes: ['Catagory'],
   endpoints: (builder) => ({
     getAllCatagory: builder.query<ICatagoryGetAllTransformResult, IGetAllCatagoryRequest | void>(
       getCatagoryListEndpoint,
     ),
-    getCatagoryById: builder.query<ICatagoryTransform, IGetCatagoryByIdRequest>(getCatagoryByIdEndpoint),
-    createCatagory: builder.mutation<ICatagoryTransform, ICreateCatagoryRequest>(createCatagoryEndpoint),
-    updateCatagory: builder.mutation<ICatagoryTransform, IUpdateCatagoryRequest>(updateCatagoryEndpoint),
-    deleteCatagory: builder.mutation<{ id: string }, IDeleteCatagoryRequest>(deleteCatagoryEndpoint),
+    getCatagoryById: builder.query<ICatagoryTransform, IGetCatagoryByIdRequest>(
+      getCatagoryByIdEndpoint,
+    ),
   }),
 })
 
-export const {
-  useGetAllCatagoryQuery,
-  useGetCatagoryByIdQuery,
-  useCreateCatagoryMutation,
-  useUpdateCatagoryMutation,
-  useDeleteCatagoryMutation,
-} = catagoryApi
+export const { useGetAllCatagoryQuery, useGetCatagoryByIdQuery } = catagoryApi
